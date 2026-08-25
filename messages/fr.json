@@ -1,0 +1,166 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "soins": "Soins",
+    "session": "Déroulé",
+    "parcours": "Parcours",
+    "conseils": "Conseils",
+    "book": "Prendre rendez-vous"
+  },
+  "common": {
+    "book": "Prendre rendez-vous",
+    "whatsapp": "WhatsApp",
+    "call": "Appeler",
+    "email": "Email",
+    "backHome": "Retour à l'accueil",
+    "readMore": "Lire",
+    "minRead": "min de lecture",
+    "skipToContent": "Aller au contenu",
+    "menu": "Menu",
+    "close": "Fermer"
+  },
+  "hero": {
+    "title": "Traiter la cause, pas seulement le symptôme.",
+    "subtitle": "Kinésithérapie et thérapie manuelle orthopédique à M'diq et Tétouan. La rééducation manuelle avant les machines, pour retrouver le mouvement en confiance.",
+    "primaryCta": "Prendre rendez-vous",
+    "secondaryCta": "Écrire sur WhatsApp",
+    "goniometer": {
+      "label": "GENOU · FLEXION",
+      "sublabel": "amplitude retrouvée"
+    }
+  },
+  "domains": {
+    "srLabel": "Domaines de prise en charge"
+  },
+  "soins": {
+    "heading": "Ce que je prends en charge",
+    "intro": "Une prise en charge qui commence par un bilan et cherche la cause du mouvement douloureux.",
+    "discover": "Découvrir",
+    "techniquesTitle": "Techniques complémentaires",
+    "techniquesDesc": "Utilisées uniquement lorsqu'elles sont indiquées, en appui de la thérapie manuelle.",
+    "conditionsTitle": "Motifs pris en charge",
+    "approachTitle": "Ma prise en charge",
+    "allSoins": "Tous les soins"
+  },
+  "session": {
+    "heading": "Le déroulé d'une séance",
+    "intro": "Une séquence claire, de l'évaluation au suivi.",
+    "steps": [
+      {
+        "title": "Bilan",
+        "desc": "On évalue le mouvement, l'amplitude et la douleur pour identifier la cause — pas seulement le symptôme."
+      },
+      {
+        "title": "Traitement manuel",
+        "desc": "Thérapie manuelle orthopédique, en priorité, avant de recourir aux machines."
+      },
+      {
+        "title": "Techniques complémentaires",
+        "desc": "Dry needling, cupping, drainage lymphatique… uniquement si elles sont indiquées."
+      },
+      {
+        "title": "Auto-rééducation & suivi",
+        "desc": "Des exercices guidés à poursuivre chez vous, et un suivi de la progression."
+      }
+    ]
+  },
+  "parcours": {
+    "heading": "Parcours",
+    "intro": "Une expérience construite entre cabinet, centre régional et hôpital, à M'diq et Tétouan.",
+    "experienceTitle": "Expériences professionnelles",
+    "formationTitle": "Formations",
+    "techniquesTitle": "Techniques pratiquées",
+    "languagesTitle": "Langues",
+    "aboutTitle": "À propos"
+  },
+  "conseils": {
+    "heading": "Conseils",
+    "intro": "Des repères simples issus de la pratique, pour comprendre votre rééducation.",
+    "seeAll": "Tous les conseils",
+    "followInsta": "Suivre sur Instagram",
+    "note": "Ces articles sont informatifs et ne remplacent pas un avis médical."
+  },
+  "booking": {
+    "heading": "Prendre rendez-vous",
+    "intro": "Remplissez ce formulaire en moins de 30 secondes. Vous l'envoyez ensuite sur WhatsApp — Ilyass vous confirme le créneau.",
+    "practicalTitle": "Informations pratiques",
+    "hoursTitle": "Horaires",
+    "hoursPlaceholderNote": "Horaires indicatifs — à confirmer avec le cabinet.",
+    "addressTitle": "Adresse",
+    "addressPlaceholderNote": "Adresse exacte communiquée à la confirmation.",
+    "openMap": "Voir sur la carte",
+    "disclaimer": {
+      "text": "Ce site ne remplace pas une consultation médicale. En cas d'urgence, appelez les secours.",
+      "emergency": "Urgences : 15 (SAMU) · 150 (Protection civile) · 19 (Police)"
+    },
+    "form": {
+      "name": "Nom complet",
+      "phone": "Téléphone",
+      "phoneHint": "Formats acceptés : 06…, +212 6…, 2126…",
+      "reason": "Motif",
+      "reasonPlaceholder": "Sélectionnez un motif",
+      "reasonOther": "Autre / je ne sais pas encore",
+      "visit": "Type de rendez-vous",
+      "visitFirst": "Première consultation",
+      "visitFollow": "Suivi",
+      "date": "Date souhaitée",
+      "datePlaceholder": "Choisir une date",
+      "slot": "Créneau souhaité",
+      "message": "Message",
+      "messageOptional": "(optionnel)",
+      "messagePlaceholder": "Précisez si besoin (douleur, disponibilité…)",
+      "submit": "Préparer sur WhatsApp",
+      "submitMailto": "Envoyer par email",
+      "sending": "Préparation…",
+      "success": "Votre demande est prête. Envoyez-la sur WhatsApp — Ilyass vous confirme le créneau.",
+      "successMailtoHint": "Vous préférez l'email ? Utilisez le bouton ci-dessous.",
+      "reset": "Nouvelle demande",
+      "errors": {
+        "name_min": "Indiquez votre nom (au moins 2 caractères).",
+        "name_max": "Nom trop long.",
+        "phone_required": "Indiquez votre téléphone.",
+        "phone_invalid": "Numéro marocain invalide (ex : 06 12 34 56 78).",
+        "reason_required": "Choisissez un motif.",
+        "visit_required": "Indiquez le type de rendez-vous.",
+        "date_required": "Choisissez une date.",
+        "date_invalid": "Date invalide.",
+        "slot_required": "Choisissez un créneau.",
+        "message_max": "Message trop long."
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Bouge mieux, récupère plus vite, vis en pleine forme.",
+    "navTitle": "Navigation",
+    "contactTitle": "Contact",
+    "legalLink": "Mentions légales & confidentialité",
+    "rights": "Tous droits réservés.",
+    "disclaimerShort": "Ce site ne remplace pas une consultation médicale."
+  },
+  "legal": {
+    "title": "Mentions légales & politique de confidentialité",
+    "editorTitle": "Éditeur du site",
+    "editorBody": "Ce site présente l'activité de kinésithérapie d'Ilyass Tchekri, kinésithérapeute et thérapeute manuel orthopédique, exerçant à M'diq et Tétouan (Maroc).",
+    "hostingTitle": "Hébergement",
+    "hostingBody": "Le site est hébergé par Vercel Inc. Les informations d'hébergement complètes seront précisées à la mise en ligne.",
+    "dataTitle": "Données collectées par le formulaire",
+    "dataIntro": "Le formulaire de rendez-vous collecte uniquement les informations nécessaires pour vous recontacter et organiser une consultation :",
+    "dataItems": [
+      "Nom complet",
+      "Numéro de téléphone",
+      "Motif de consultation et type de rendez-vous",
+      "Date et créneau souhaités",
+      "Message libre (facultatif)"
+    ],
+    "purposeTitle": "Pourquoi ces données",
+    "purposeBody": "Ces données servent exclusivement à traiter votre demande de rendez-vous et à vous recontacter. En Phase 1, elles ne sont pas stockées sur un serveur : le formulaire prépare simplement un message que vous envoyez vous-même via WhatsApp ou email. Aucune donnée n'est transmise à un tiers à des fins commerciales.",
+    "retentionTitle": "Durée de conservation",
+    "retentionBody": "Les messages que vous envoyez (WhatsApp, email) sont conservés le temps nécessaire à la prise en charge de votre demande, puis supprimés selon les pratiques habituelles du cabinet.",
+    "rightsTitle": "Vos droits",
+    "rightsBody": "Vous pouvez demander l'accès, la rectification ou la suppression de vos données en contactant le cabinet par téléphone ou email.",
+    "medicalTitle": "Avertissement médical",
+    "medicalBody": "Les informations présentes sur ce site sont fournies à titre informatif et ne remplacent pas une consultation médicale ou un diagnostic professionnel. En cas d'urgence, appelez les secours.",
+    "contactTitle": "Contact",
+    "updated": "Dernière mise à jour"
+  }
+}

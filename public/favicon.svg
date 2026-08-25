@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="14" fill="#0B1733"/>
+  <!-- charnière + bras fixe -->
+  <circle cx="18" cy="46" r="4" fill="#00C4A7"/>
+  <line x1="18" y1="46" x2="50" y2="46" stroke="#F1F4F9" stroke-width="4" stroke-linecap="round"/>
+  <!-- bras mobile ~ 40° -->
+  <line x1="18" y1="46" x2="42" y2="22" stroke="#00C4A7" stroke-width="4" stroke-linecap="round"/>
+  <!-- arc -->
+  <path d="M 42 46 A 24 24 0 0 0 32 27" fill="none" stroke="#00C4A7" stroke-width="3"/>
+</svg>
