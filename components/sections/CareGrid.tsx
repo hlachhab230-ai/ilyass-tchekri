@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { soins, techniques } from "@/lib/content";
 import { Reveal } from "@/components/Reveal";
+import { cn } from "@/lib/utils";
 import type { Locale } from "@/i18n/routing";
 
 export async function CareGrid() {
@@ -38,7 +39,10 @@ export async function CareGrid() {
                 <span className="mt-6 inline-flex items-center gap-1.5 font-mono text-[length:var(--step--1)] uppercase tracking-wide text-[color:var(--color-tape-ink)]">
                   {t("discover")}
                   <ArrowRight
-                    className={`size-4 transition-transform group-hover:translate-x-1 ${isRtl ? "rotate-180 group-hover:-translate-x-1" : ""}`}
+                    className={cn(
+                      "size-4 transition-transform",
+                      isRtl ? "rotate-180 group-hover:-translate-x-1" : "group-hover:translate-x-1",
+                    )}
                     aria-hidden="true"
                   />
                 </span>

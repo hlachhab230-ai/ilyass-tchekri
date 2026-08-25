@@ -106,6 +106,7 @@
       "date": "Date souhaitée",
       "datePlaceholder": "Choisir une date",
       "slot": "Créneau souhaité",
+      "closedDay": "Le cabinet est fermé ce jour-là. Choisissez une autre date.",
       "message": "Message",
       "messageOptional": "(optionnel)",
       "messagePlaceholder": "Précisez si besoin (douleur, disponibilité…)",
@@ -125,6 +126,7 @@
         "date_required": "Choisissez une date.",
         "date_invalid": "Date invalide.",
         "slot_required": "Choisissez un créneau.",
+        "slot_unavailable": "Ce créneau n'est pas disponible ce jour-là.",
         "message_max": "Message trop long."
       }
     }

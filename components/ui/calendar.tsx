@@ -14,6 +14,8 @@ type CalendarProps = {
   className?: string;
   /** Dates avant aujourd'hui désactivées par défaut. */
   fromDate?: Date;
+  /** Jours de semaine fermés à désactiver (0 = dimanche). */
+  disabledDaysOfWeek?: number[];
 };
 
 export function Calendar({
@@ -22,6 +24,7 @@ export function Calendar({
   locale = "fr",
   className,
   fromDate,
+  disabledDaysOfWeek,
 }: CalendarProps) {
   const today = React.useMemo(() => {
     const d = new Date();
@@ -53,7 +56,12 @@ export function Calendar({
         locale={locale === "ar" ? arMA : fr}
         dir={locale === "ar" ? "rtl" : "ltr"}
         startMonth={fromDate ?? today}
-        disabled={{ before: fromDate ?? today }}
+        disabled={[
+          { before: fromDate ?? today },
+          ...(disabledDaysOfWeek && disabledDaysOfWeek.length
+            ? [{ dayOfWeek: disabledDaysOfWeek }]
+            : []),
+        ]}
         showOutsideDays={false}
       />
     </div>

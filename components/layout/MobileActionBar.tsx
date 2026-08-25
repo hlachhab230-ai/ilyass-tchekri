@@ -45,6 +45,9 @@ export function MobileActionBar() {
   return (
     <div
       aria-hidden={hidden}
+      // `inert` retire les liens du parcours clavier et du focus quand la barre
+      // est masquée : pas de contenu focusable dans un sous-arbre aria-hidden.
+      inert={hidden}
       className={`fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-px border-t border-[color:var(--border-hair)] bg-[color:var(--color-ink)] md:hidden transition-transform duration-300 ${
         hidden ? "translate-y-full" : "translate-y-0"
       }`}

@@ -10,7 +10,8 @@ import { fr } from "date-fns/locale/fr";
 import { arMA } from "date-fns/locale/ar-MA";
 import { CalendarDays, MessageCircle, Mail, Check } from "lucide-react";
 
-import { bookingSchema, type BookingInput, type BookingData } from "@/lib/booking-schema";
+import { bookingSchema, slotsForDate, SLOTS, type BookingInput, type BookingData } from "@/lib/booking-schema";
+import { site } from "@/lib/site";
 import { buildBookingMessage, whatsappLink, mailtoLink } from "@/lib/wa-message";
 import { soins } from "@/lib/content";
 import type { Locale } from "@/i18n/routing";
@@ -31,6 +32,9 @@ import { SlotChips } from "./SlotChips";
 
 type Result = { wa: string; mailto: string };
 
+// Jours de la semaine fermés (0 = dimanche) d'après les horaires du cabinet.
+const CLOSED_DAYS = site.hours.weekly.filter((d) => d.closed).map((d) => d.day);
+
 export function BookingForm() {
   const t = useTranslations("booking");
   const locale = useLocale() as Locale;
@@ -43,6 +47,8 @@ export function BookingForm() {
     register,
     handleSubmit,
     control,
+    watch,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<BookingInput>({
     resolver: zodResolver(bookingSchema),
@@ -59,8 +65,31 @@ export function BookingForm() {
     mode: "onTouched",
   });
 
-  // Traduit un code d'erreur zod ; repli sur le code brut si absent.
-  const err = (code?: string) => (code ? t(`form.errors.${code}` as never) : undefined);
+  // Traduit un code d'erreur zod. Ne traduit que les codes connus : un code
+  // inattendu (ex. erreur d'union zod) ne doit jamais déclencher un
+  // MISSING_MESSAGE de next-intl.
+  const KNOWN_ERRORS = new Set([
+    "name_min", "name_max", "phone_required", "phone_invalid",
+    "reason_required", "visit_required", "date_required", "date_invalid",
+    "slot_required", "slot_unavailable", "message_max",
+  ]);
+  const err = (code?: string) =>
+    code && KNOWN_ERRORS.has(code) ? t(`form.errors.${code}` as never) : undefined;
+
+  // Créneaux proposables selon la date choisie (horaires du jour).
+  const watchedDate = watch("preferredDate");
+  const watchedSlot = watch("preferredSlot");
+  const availableSlots = React.useMemo(
+    () => (watchedDate ? slotsForDate(watchedDate) : SLOTS),
+    [watchedDate],
+  );
+
+  // Si la date change et que le créneau choisi n'est plus proposable, on le vide.
+  React.useEffect(() => {
+    if (watchedDate && watchedSlot && !availableSlots.includes(watchedSlot)) {
+      setValue("preferredSlot", "", { shouldValidate: false });
+    }
+  }, [watchedDate, watchedSlot, availableSlots, setValue]);
 
   const submit = (via: "wa" | "mail") =>
     handleSubmit((values) => {
@@ -68,6 +97,11 @@ export function BookingForm() {
       const message = buildBookingMessage(data, locale);
       const wa = whatsappLink(message);
       const mailto = mailtoLink(message, locale);
+      // On affiche TOUJOURS l'écran de succès en premier : il contient un vrai
+      // lien <a> vers WhatsApp que l'utilisateur peut toucher. C'est le chemin
+      // fiable — l'ouverture automatique ci-dessous est un « best-effort » qui
+      // peut être bloquée par le navigateur (iOS Safari) après la validation
+      // asynchrone ; dans ce cas l'écran de succès prend le relais.
       setResult({ wa, mailto });
 
       if (via === "wa") {
@@ -266,6 +300,7 @@ export function BookingForm() {
                       <Calendar
                         locale={locale}
                         selected={selectedDate}
+                        disabledDaysOfWeek={CLOSED_DAYS}
                         onSelect={(d) => {
                           if (d) field.onChange(format(d, "yyyy-MM-dd"));
                           setShowCal(false);
@@ -297,9 +332,15 @@ export function BookingForm() {
                 labelledBy="slot-label"
                 value={field.value}
                 onChange={field.onChange}
+                available={availableSlots}
               />
             )}
           />
+          {watchedDate && availableSlots.length === 0 && (
+            <p className="text-[length:var(--step--1)] text-[color:var(--color-slate)]">
+              {t("form.closedDay")}
+            </p>
+          )}
           {errors.preferredSlot && (
             <p className="text-[length:var(--step--1)] text-[color:var(--color-ember)]">
               {err(errors.preferredSlot.message)}
