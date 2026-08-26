@@ -5,8 +5,6 @@ import { Hero } from "@/components/sections/Hero";
 import { CareCards } from "@/components/sections/CareCards";
 import { About } from "@/components/sections/About";
 import { StatsBand } from "@/components/sections/StatsBand";
-import { SessionFlow } from "@/components/sections/SessionFlow";
-import { TechniquesAccordion } from "@/components/sections/TechniquesAccordion";
 import { AdviceTeaser } from "@/components/sections/AdviceTeaser";
 import { BookingSection } from "@/components/sections/BookingSection";
 
@@ -31,8 +29,6 @@ export default async function HomePage({
       <CareCards />
       <About />
       <StatsBand />
-      <SessionFlow />
-      <TechniquesAccordion />
       <AdviceTeaser />
       <BookingSection />
     </>

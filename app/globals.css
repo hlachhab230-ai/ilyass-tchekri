@@ -77,7 +77,9 @@
     text-transform: uppercase;
     letter-spacing: -0.02em;
     line-height: 0.92;
-    color: var(--color-ink);
+    /* Pas de couleur imposée : les titres héritent (ink sur fond clair via
+       body, blanc quand un parent est en text-white sur les sections sombres). */
+    color: inherit;
     text-wrap: balance;
   }
   /* Titres arabes : Cairo lourd (Anton n'a pas l'arabe), pas de capitales */

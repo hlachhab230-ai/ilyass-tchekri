@@ -3,7 +3,7 @@ import { routing } from "@/i18n/routing";
 import { site } from "@/lib/site";
 import { soins, articles } from "@/lib/content";
 
-const staticPaths = ["", "/parcours", "/conseils", "/rendez-vous", "/mentions-legales"];
+const staticPaths = ["", "/soins", "/methode", "/parcours", "/conseils", "/rendez-vous", "/mentions-legales"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [

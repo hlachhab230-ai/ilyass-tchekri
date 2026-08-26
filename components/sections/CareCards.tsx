@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { soins, getSoin } from "@/lib/content";
 import { GlassCard } from "@/components/glass/GlassCard";
+import { PillButton } from "@/components/glass/PillButton";
 import { AnatomyVisual, type AnatomyName } from "@/components/visuals/AnatomyVisual";
 import type { Locale } from "@/i18n/routing";
 
@@ -52,6 +53,10 @@ export async function CareCards() {
             <ArrowUpRight className="size-3.5 text-[color:var(--color-blue)] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 rtl:-scale-x-100" />
           </Link>
         ))}
+      </div>
+
+      <div className="mt-8">
+        <PillButton href="/soins" label={t("allSoins")} variant="white" />
       </div>
     </section>
   );
