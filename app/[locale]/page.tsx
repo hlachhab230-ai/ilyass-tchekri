@@ -23,8 +23,12 @@ export default async function HomePage({
     <>
       <script
         type="application/ld+json"
+        // Données statiques (aucune entrée utilisateur). On échappe tout de même
+        // `<` en < par défense en profondeur (évite un breakout </script>).
         // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
       />
       <Hero />
       <DomainsBand />

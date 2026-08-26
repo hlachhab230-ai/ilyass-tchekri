@@ -21,9 +21,10 @@ placeholders correspondants sont clairement commentés dans le code
 ## 🟠 Photos & visuels
 
 - [ ] **Photo portrait** d'Ilyass (celle envoyée) au format `.jpg`/`.webp`
-      → à déposer dans `public/images/ilyass-portrait.jpg`
-      (la photo n'a pas pu être récupérée automatiquement ; un emplacement est
-      prévu pour l'intégrer à la page Parcours)
+      → 1) déposer le fichier dans `public/images/ilyass-portrait.jpg`
+      → 2) dans `lib/site.ts`, mettre `portrait: "/images/ilyass-portrait.jpg"`
+      (la photo n'a pas pu être récupérée automatiquement ; en attendant, un
+      cadre placeholder aux couleurs de la marque s'affiche sur la page Parcours)
 - [ ] **Logo PhysioFit** en vectoriel (SVG) si vous voulez l'afficher
 - [ ] Éventuelles **photos du cabinet** (salle de soins, matériel)
 

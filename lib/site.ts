@@ -43,6 +43,14 @@ export const site = {
   },
 
   /**
+   * Portrait d'Ilyass (page Parcours).
+   * À CONFIRMER — déposez la photo dans `public/images/ilyass-portrait.jpg`
+   * puis mettez ici son chemin : "/images/ilyass-portrait.jpg".
+   * Tant que la valeur est null, un cadre placeholder élégant est affiché.
+   */
+  portrait: null as string | null,
+
+  /**
    * Adresse exacte du cabinet.
    * À CONFIRMER — remplacez `street` par l'adresse postale complète.
    * `locality` et `region` sont corrects. `mapQuery` sert au lien Google Maps.

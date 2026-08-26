@@ -5,6 +5,7 @@ import { site } from "@/lib/site";
 import { bio, experiences, formations } from "@/lib/parcours";
 import { techniques } from "@/lib/content";
 import { Reveal } from "@/components/Reveal";
+import { Portrait } from "@/components/sections/Portrait";
 
 export async function generateMetadata({
   params,
@@ -38,14 +39,17 @@ export default async function ParcoursPage({
     <div className="bg-[color:var(--color-paper)]">
       {/* En-tête */}
       <div className="bg-[color:var(--color-ink)] text-[color:var(--color-paper)]">
-        <div className="mx-auto max-w-4xl px-4 py-14 sm:px-6 md:py-20">
-          <p className="font-mono text-[length:var(--step--1)] uppercase tracking-[0.2em] text-[color:var(--color-tape)]">
-            {site.area[locale]}
-          </p>
-          <h1 className="mt-3 text-[length:var(--step-4)] font-extrabold">{t("heading")}</h1>
-          <p className="mt-4 max-w-2xl text-[length:var(--step-1)] text-[color:color-mix(in_srgb,var(--color-paper)_80%,transparent)]">
-            {bio[locale]}
-          </p>
+        <div className="mx-auto grid max-w-4xl items-center gap-8 px-4 py-14 sm:px-6 md:grid-cols-[1.4fr_1fr] md:py-20">
+          <div>
+            <p className="font-mono text-[length:var(--step--1)] uppercase tracking-[0.2em] text-[color:var(--color-tape)]">
+              {site.area[locale]}
+            </p>
+            <h1 className="mt-3 text-[length:var(--step-4)] font-extrabold">{t("heading")}</h1>
+            <p className="mt-4 text-[length:var(--step-1)] text-[color:color-mix(in_srgb,var(--color-paper)_80%,transparent)]">
+              {bio[locale]}
+            </p>
+          </div>
+          <Portrait name={site.name} src={site.portrait} />
         </div>
       </div>
 
