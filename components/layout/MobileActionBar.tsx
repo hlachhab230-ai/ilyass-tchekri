@@ -48,23 +48,27 @@ export function MobileActionBar() {
       // `inert` retire les liens du parcours clavier et du focus quand la barre
       // est masquée : pas de contenu focusable dans un sous-arbre aria-hidden.
       inert={hidden}
-      className={`fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-px border-t border-[color:var(--border-hair)] bg-[color:var(--color-ink)] md:hidden transition-transform duration-300 ${
+      className={`fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-px border-t border-[color:var(--hairline)] bg-white md:hidden transition-transform duration-300 ${
         hidden ? "translate-y-full" : "translate-y-0"
       }`}
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
       <a
         href={whatsappBase}
-        className="flex items-center justify-center gap-2 py-3.5 text-[color:var(--color-paper)] font-medium focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[color:var(--color-tape-ink)]"
+        className="flex items-center justify-center gap-2.5 py-3 font-medium text-[color:var(--color-ink)] focus-visible:outline-3 focus-visible:-outline-offset-2 focus-visible:outline-[color:var(--color-ink)]"
       >
-        <MessageCircle className="size-5 text-[color:var(--color-tape)]" aria-hidden="true" />
+        <span className="grid size-8 place-items-center rounded-lg bg-[color:var(--color-lime)]">
+          <MessageCircle className="size-4 text-[color:var(--color-ink)]" aria-hidden="true" />
+        </span>
         {t("whatsapp")}
       </a>
       <a
         href={`tel:${site.phone.tel}`}
-        className="flex items-center justify-center gap-2 border-s border-[color:color-mix(in_srgb,var(--color-paper)_16%,transparent)] py-3.5 text-[color:var(--color-paper)] font-medium focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[color:var(--color-tape-ink)]"
+        className="flex items-center justify-center gap-2.5 border-s border-[color:var(--hairline)] py-3 font-medium text-[color:var(--color-ink)] focus-visible:outline-3 focus-visible:-outline-offset-2 focus-visible:outline-[color:var(--color-ink)]"
       >
-        <Phone className="size-5 text-[color:var(--color-tape)]" aria-hidden="true" />
+        <span className="grid size-8 place-items-center rounded-lg bg-[color:var(--color-ice)]">
+          <Phone className="size-4 text-[color:var(--color-blue)]" aria-hidden="true" />
+        </span>
         {t("call")}
       </a>
     </div>

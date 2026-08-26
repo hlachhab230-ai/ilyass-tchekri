@@ -3,39 +3,34 @@ import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { DirectionProvider } from "@radix-ui/react-direction";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import {
-  Bricolage_Grotesque,
-  Inter_Tight,
-  JetBrains_Mono,
-  Noto_Kufi_Arabic,
-} from "next/font/google";
+import { Anton, Inter, Cairo } from "next/font/google";
 import { routing, type Locale } from "@/i18n/routing";
 import { site } from "@/lib/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MobileActionBar } from "@/components/layout/MobileActionBar";
+import { Backdrop } from "@/components/glass/Backdrop";
 import { Toaster } from "@/components/ui/toaster";
 import "../globals.css";
 
-const bricolage = Bricolage_Grotesque({
+// Anton : display capitales (latin, un seul poids très gras)
+const anton = Anton({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+  variable: "--font-anton",
+});
+// Inter : texte courant
+const inter = Inter({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-bricolage",
+  variable: "--font-inter",
 });
-const interTight = Inter_Tight({
-  subsets: ["latin"],
+// Cairo : titres + texte arabes (Anton n'a pas l'arabe)
+const cairo = Cairo({
+  subsets: ["arabic", "latin"],
   display: "swap",
-  variable: "--font-inter-tight",
-});
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-jetbrains",
-});
-const arabic = Noto_Kufi_Arabic({
-  subsets: ["arabic"],
-  display: "swap",
-  variable: "--font-arabic-face",
+  variable: "--font-cairo",
 });
 
 export function generateStaticParams() {
@@ -106,22 +101,27 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       dir={dir}
-      className={`${bricolage.variable} ${interTight.variable} ${jetbrains.variable} ${arabic.variable}`}
+      className={`${anton.variable} ${inter.variable} ${cairo.variable}`}
     >
       <body>
         <NextIntlClientProvider>
           <DirectionProvider dir={dir}>
-          <a
-            href="#main"
-            className="sr-only focus:not-sr-only focus:fixed focus:z-[100] focus:top-3 focus:start-3 focus:bg-[color:var(--color-ink)] focus:text-[color:var(--color-paper)] focus:px-4 focus:py-2 focus:rounded-md"
-          >
-            {t("skipToContent")}
-          </a>
-          <Header />
-          <main id="main">{children}</main>
-          <Footer />
-          <MobileActionBar />
-          <Toaster />
+            <a
+              href="#main"
+              className="sr-only focus:not-sr-only focus:fixed focus:z-[100] focus:top-3 focus:start-3 focus:bg-[color:var(--color-ink)] focus:text-white focus:px-4 focus:py-2 focus:rounded-md"
+            >
+              {t("skipToContent")}
+            </a>
+            {/* Fond bleu poudré + mot filigrane géant, derrière le panneau */}
+            <Backdrop word="PHYSIO" />
+            {/* La page entière vit dans le panneau flottant */}
+            <div className="panel overflow-clip">
+              <Header />
+              <main id="main">{children}</main>
+              <Footer />
+            </div>
+            <MobileActionBar />
+            <Toaster />
           </DirectionProvider>
         </NextIntlClientProvider>
       </body>

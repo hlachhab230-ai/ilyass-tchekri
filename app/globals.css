@@ -1,135 +1,186 @@
 @import "tailwindcss";
 
 /* ──────────────────────────────────────────────────────────────────────────
-   Design tokens (Tailwind v4, CSS-first). Voir DIRECTION ARTISTIQUE.
-   Un seul accent visible à la fois par section.
+   MEDICAL GLASS — tokens (Tailwind v4, CSS-first).
+   Bleu clinique lumineux · verre dépoli · vert citron réservé aux actions.
    ────────────────────────────────────────────────────────────────────────── */
 @theme {
-  --color-ink: #0b1733;
-  --color-navy: #14265a;
-  --color-slate: #55648c;
-  --color-paper: #f1f4f9;
-  --color-tape: #00c4a7;
-  /* Teal accessible pour TEXTE/ICÔNES sur fond CLAIR (paper/blanc).
-     #00C4A7 sur paper ≈ 1.9:1 (échoue AA) ; ce teal profond ≈ 4.9:1 (AA). */
-  --color-tape-ink: #007a6b;
-  --color-ember: #ff6a4d;
+  --color-ink: #0a2c6b; /* bleu marine — titres, boutons primaires */
+  --color-blue: #1b58c7; /* bleu médian — liens, icônes */
+  --color-sky: #a9c6e8; /* bleu poudré — fond de page hors panneau */
+  --color-ice: #edf3fc; /* fond des sections claires */
+  --color-lime: #6fe04a; /* accent d'action UNIQUEMENT (jamais de texte, jamais un fond de section) */
+  --color-aqua: #35c9c0; /* dégradés des visuels 3D seulement */
+  --color-muted: #6b7c99; /* texte secondaire */
+  --color-paper: #ffffff;
 
-  /* Fontes — variables injectées par next/font (voir app/[locale]/layout.tsx) */
-  --font-display: var(--font-bricolage), "Bricolage Grotesque", system-ui, sans-serif;
-  --font-sans: var(--font-inter-tight), "Inter Tight", system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains), "JetBrains Mono", ui-monospace, monospace;
-  --font-arabic: var(--font-arabic-face), "Noto Kufi Arabic", var(--font-inter-tight), sans-serif;
+  /* Surfaces en verre */
+  --glass: rgba(255, 255, 255, 0.55); /* décoratif / survols */
+  --glass-solid: rgba(255, 255, 255, 0.9); /* repli AA quand du texte y repose */
+  --stroke: rgba(255, 255, 255, 0.75); /* liseré haut des cartes de verre */
+  --hairline: rgba(10, 44, 107, 0.12);
+
+  /* Fontes (next/font) — Anton (titres latin), Inter (texte), Cairo (arabe) */
+  --font-display: var(--font-anton), "Anton", Impact, system-ui, sans-serif;
+  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
+  --font-arabic: var(--font-cairo), "Cairo", system-ui, sans-serif;
+
+  /* Rayons & ombres */
+  --radius-pill: 999px;
+  --shadow-panel: 0 40px 120px rgba(10, 44, 107, 0.18);
+  --shadow-card: 0 16px 40px rgba(10, 44, 107, 0.12);
+  --shadow-badge: 0 10px 30px rgba(10, 44, 107, 0.16);
 }
 
-/* Échelle de type en clamp() — aucune taille fixe. Ratio ~1.22 */
+/* Échelle de type en clamp() — aucune taille fixe */
 :root {
-  --step--1: clamp(0.79rem, 0.77rem + 0.1vw, 0.84rem);
+  --step--1: clamp(0.8rem, 0.78rem + 0.1vw, 0.85rem);
   --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
-  --step-1: clamp(1.2rem, 1.1rem + 0.5vw, 1.4rem);
-  --step-2: clamp(1.44rem, 1.25rem + 1vw, 1.9rem);
-  --step-3: clamp(1.73rem, 1.4rem + 1.6vw, 2.6rem);
-  --step-4: clamp(2.07rem, 1.5rem + 2.8vw, 3.6rem);
-  --step-5: clamp(2.49rem, 1.6rem + 4.4vw, 5rem);
-
-  --border-hair: color-mix(in srgb, var(--color-slate) 28%, transparent);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.4rem);
+  --step-2: clamp(1.5rem, 1.2rem + 1.4vw, 2.2rem);
+  --step-3: clamp(2rem, 1.4rem + 3vw, 3.4rem);
+  --step-4: clamp(2.6rem, 1.6rem + 5vw, 5rem);
+  --hero: clamp(3rem, 9vw, 7rem); /* H1 hero */
+  --panel-radius: 32px;
+  --card-radius: 24px;
 }
 
 @layer base {
-  * {
-    border-color: var(--border-hair);
-  }
-
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
-    /* Garde-fou : jamais de scroll horizontal de la page. `clip` (et non
-       `hidden`) n'établit pas de conteneur de défilement, donc le header
-       sticky continue de fonctionner. Neutralise aussi les inputs masqués
-       hors-écran (honeypot, primitives Radix) sous RTL. */
-    overflow-x: clip;
   }
 
   body {
-    background-color: var(--color-paper);
     color: var(--color-ink);
     font-family: var(--font-sans);
     font-size: var(--step-0);
-    line-height: 1.55;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+    /* Fond bleu poudré, dégradé radial doux (le mot filigrane est en JSX). */
+    background:
+      radial-gradient(120% 90% at 50% -10%, #c9dcf1 0%, var(--color-sky) 45%, #93b4dd 100%)
+      fixed;
+    min-height: 100dvh;
   }
 
-  /* Texte arabe : famille dédiée + interligne un peu plus aéré. */
   :lang(ar) body,
   [dir="rtl"] {
     font-family: var(--font-arabic);
-    line-height: 1.7;
   }
 
-  h1, h2, h3, h4 {
+  /* Titres display : CAPITALES, très gras, tracking serré, interligne 0.92 */
+  h1, h2, h3 {
     font-family: var(--font-display);
-    font-weight: 700;
+    font-weight: 400; /* Anton n'a qu'un poids, déjà très gras */
+    text-transform: uppercase;
     letter-spacing: -0.02em;
-    line-height: 1.05;
+    line-height: 0.92;
+    color: var(--color-ink);
     text-wrap: balance;
   }
+  /* Titres arabes : Cairo lourd (Anton n'a pas l'arabe), pas de capitales */
   :lang(ar) h1, [dir="rtl"] h1,
   :lang(ar) h2, [dir="rtl"] h2,
   :lang(ar) h3, [dir="rtl"] h3 {
     font-family: var(--font-arabic);
+    font-weight: 900;
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1.1;
+  }
+
+  /* Eyebrows / labels de données */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.6875rem; /* 11px */
+    letter-spacing: 0.12em;
+    color: var(--color-blue);
+  }
+  :lang(ar) .eyebrow, [dir="rtl"] .eyebrow {
+    font-family: var(--font-arabic);
+    text-transform: none;
     letter-spacing: 0;
   }
 
-  /* Données mesurées : mono. En arabe, garder les chiffres en mono. */
-  .font-mono,
-  [class*="tabular"] {
-    font-family: var(--font-mono);
-    font-feature-settings: "tnum" 1;
-  }
-
-  /* Focus clavier visible — jamais supprimé. Teal profond : ≥3:1 sur fond
-     clair (4.9:1) comme sur fond sombre (3.3:1), conforme WCAG 1.4.11. */
+  /* Focus clavier — visible aussi sur le verre. Jamais supprimé. */
   :focus-visible {
-    outline: 2px solid var(--color-tape-ink);
+    outline: 3px solid var(--color-ink);
     outline-offset: 2px;
-    border-radius: 2px;
+    border-radius: 6px;
   }
-
   ::selection {
-    background: color-mix(in srgb, var(--color-tape) 30%, transparent);
+    background: color-mix(in srgb, var(--color-blue) 22%, transparent);
   }
 }
 
 /* ──────────────────────────────────────────────────────────────────────────
-   Reveal au scroll : opacité + translation de 12px maximum, une seule fois.
-   Respecte prefers-reduced-motion (état final direct).
+   Langage de formes — utilitaires réutilisables
    ────────────────────────────────────────────────────────────────────────── */
-@layer utilities {
-  .reveal {
-    opacity: 0;
-    transform: translateY(12px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    will-change: opacity, transform;
+@layer components {
+  /* 1. Panneau flottant : la page vit dedans */
+  .panel {
+    position: relative;
+    z-index: 1;
+    max-width: 1280px;
+    margin-inline: auto;
+    margin-block: clamp(0.75rem, 2vw, 1.75rem);
+    background: var(--color-paper);
+    border-radius: var(--panel-radius);
+    box-shadow: var(--shadow-panel);
   }
-  .reveal[data-shown="true"] {
-    opacity: 1;
-    transform: none;
+  @media (max-width: 640px) {
+    .panel {
+      --panel-radius: 20px;
+      margin-inline: 0.5rem;
+    }
+  }
+
+  /* 3. Carte de verre */
+  .glass {
+    background: var(--glass);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    border-radius: var(--card-radius);
+    border-top: 1px solid var(--stroke);
+    box-shadow: var(--shadow-card);
+  }
+  /* Repli opaque quand du texte long repose sur le verre (AA) */
+  .glass-solid {
+    background: var(--glass-solid);
+    border-radius: var(--card-radius);
+    border-top: 1px solid var(--stroke);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Halo radial derrière les visuels anatomiques */
+  .halo {
+    background: radial-gradient(
+      60% 60% at 50% 45%,
+      color-mix(in srgb, var(--color-aqua) 42%, transparent) 0%,
+      color-mix(in srgb, var(--color-blue) 22%, transparent) 42%,
+      transparent 72%
+    );
   }
 }
 
+/* ──────────────────────────────────────────────────────────────────────────
+   Animations — flottement des badges, tracé anatomique. Respect reduced-motion.
+   ────────────────────────────────────────────────────────────────────────── */
+@keyframes float-badge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.badge-float {
+  animation: float-badge 4s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  .reveal {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-  *,
-  *::before,
-  *::after {
+  html { scroll-behavior: auto; }
+  .badge-float { animation: none !important; }
+  *, *::before, *::after {
     animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
