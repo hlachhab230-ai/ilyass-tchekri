@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 import { bio, experiences, formations } from "@/lib/parcours";
 import { techniques } from "@/lib/content";
 import { Reveal } from "@/components/Reveal";
-import { Portrait } from "@/components/sections/Portrait";
+import { ArchMask } from "@/components/glass/ArchMask";
 
 export async function generateMetadata({
   params,
@@ -41,15 +41,15 @@ export default async function ParcoursPage({
       <div className="bg-[color:var(--color-ink)] text-[color:var(--color-paper)]">
         <div className="mx-auto grid max-w-4xl items-center gap-8 px-4 py-14 sm:px-6 md:grid-cols-[1.4fr_1fr] md:py-20">
           <div>
-            <p className="font-mono text-[length:var(--step--1)] uppercase tracking-[0.2em] text-[color:var(--color-tape)]">
-              {site.area[locale]}
-            </p>
-            <h1 className="mt-3 text-[length:var(--step-4)] font-extrabold">{t("heading")}</h1>
+            <p className="eyebrow text-[color:var(--color-sky)]">{site.area[locale]}</p>
+            <h1 className="mt-3 text-[length:var(--step-4)]">{t("heading")}</h1>
             <p className="mt-4 text-[length:var(--step-1)] text-[color:color-mix(in_srgb,var(--color-paper)_80%,transparent)]">
               {bio[locale]}
             </p>
           </div>
-          <Portrait name={site.name} src={site.portrait} />
+          <div className="mx-auto w-full max-w-[300px]">
+            <ArchMask src={site.portrait} alt={site.name} initials="IT" />
+          </div>
         </div>
       </div>
 
@@ -59,16 +59,16 @@ export default async function ParcoursPage({
           <h2 className="text-[length:var(--step-3)] font-bold text-[color:var(--color-ink)]">
             {t("experienceTitle")}
           </h2>
-          <ul className="mt-6 divide-y divide-[color:var(--border-hair)]">
+          <ul className="mt-6 divide-y divide-[color:var(--hairline)]">
             {experiences.map((exp) => (
               <li key={exp.place} className="grid gap-1 py-5 sm:grid-cols-[1fr_auto] sm:items-baseline sm:gap-6">
                 <div>
                   <div className="text-[length:var(--step-1)] font-medium text-[color:var(--color-ink)]">
                     {exp.place}
                   </div>
-                  <div className="mt-1 text-[color:var(--color-slate)]">{exp.role[locale]}</div>
+                  <div className="mt-1 text-[color:var(--color-muted)]">{exp.role[locale]}</div>
                 </div>
-                <div className="font-mono text-[length:var(--step--1)] uppercase tracking-wide text-[color:var(--color-tape-ink)]">
+                <div className="font-mono text-[length:var(--step--1)] uppercase tracking-wide text-[color:var(--color-blue)]">
                   {exp.location[locale]}
                 </div>
               </li>
@@ -84,7 +84,7 @@ export default async function ParcoursPage({
           <div className="mt-6 space-y-6">
             {formations.map((f) => (
               <div key={f.year} className="grid gap-2 sm:grid-cols-[7rem_1fr] sm:gap-6">
-                <div className="font-mono text-[length:var(--step-0)] tabular-nums text-[color:var(--color-tape-ink)]">
+                <div className="font-mono text-[length:var(--step-0)] tabular-nums text-[color:var(--color-blue)]">
                   {f.year}
                 </div>
                 <ul className="space-y-1.5">
@@ -109,7 +109,7 @@ export default async function ParcoursPage({
               {techniques.map((tech) => (
                 <li
                   key={tech.fr}
-                  className="rounded-full border border-[color:var(--border-hair)] px-3.5 py-1.5 font-mono text-[length:var(--step--1)] text-[color:var(--color-slate)]"
+                  className="rounded-full border border-[color:var(--hairline)] px-3.5 py-1.5 font-mono text-[length:var(--step--1)] text-[color:var(--color-muted)]"
                 >
                   {tech[locale]}
                 </li>
@@ -125,7 +125,7 @@ export default async function ParcoursPage({
               {languages.map((lang) => (
                 <li
                   key={lang}
-                  className="rounded-full border border-[color:var(--border-hair)] px-3.5 py-1.5 text-[length:var(--step-0)] text-[color:var(--color-ink)]"
+                  className="rounded-full border border-[color:var(--hairline)] px-3.5 py-1.5 text-[length:var(--step-0)] text-[color:var(--color-ink)]"
                 >
                   {lang}
                 </li>

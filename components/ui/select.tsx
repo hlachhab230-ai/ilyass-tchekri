@@ -15,7 +15,7 @@ const SelectTrigger = React.forwardRef<
   <SelectPrimitive.Trigger
     ref={ref}
     className={cn(
-      "flex h-11 w-full items-center justify-between gap-2 rounded-md border border-[color:var(--border-hair)] bg-white/60 px-3.5 py-2 text-[length:var(--step-0)] text-[color:var(--color-ink)] transition-colors data-[placeholder]:text-[color:color-mix(in_srgb,var(--color-slate)_75%,transparent)] focus:border-[color:var(--color-tape)] focus:outline-2 focus:outline-offset-2 focus:outline-[color:var(--color-tape-ink)] disabled:cursor-not-allowed disabled:opacity-50 aria-[invalid=true]:border-[color:var(--color-ember)] [&>span]:truncate",
+      "flex h-11 w-full items-center justify-between gap-2 rounded-md border border-[color:var(--hairline)] bg-white/60 px-3.5 py-2 text-[length:var(--step-0)] text-[color:var(--color-ink)] transition-colors data-[placeholder]:text-[color:color-mix(in_srgb,var(--color-muted)_75%,transparent)] focus:border-[color:var(--color-blue)] focus:outline-2 focus:outline-offset-2 focus:outline-[color:var(--color-blue)] disabled:cursor-not-allowed disabled:opacity-50 aria-[invalid=true]:border-[color:var(--color-error)] [&>span]:truncate",
       className,
     )}
     {...props}
@@ -37,7 +37,7 @@ const SelectContent = React.forwardRef<
       ref={ref}
       position={position}
       className={cn(
-        "relative z-50 max-h-72 min-w-[var(--radix-select-trigger-width)] overflow-hidden rounded-md border border-[color:var(--border-hair)] bg-[color:var(--color-paper)] text-[color:var(--color-ink)] shadow-lg",
+        "relative z-50 max-h-72 min-w-[var(--radix-select-trigger-width)] overflow-hidden rounded-md border border-[color:var(--hairline)] bg-[color:var(--color-paper)] text-[color:var(--color-ink)] shadow-lg",
         position === "popper" && "data-[side=bottom]:translate-y-1",
         className,
       )}
@@ -58,14 +58,14 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      "relative flex w-full cursor-pointer select-none items-center rounded-sm py-2 pe-8 ps-3 text-[length:var(--step-0)] outline-none data-[highlighted]:bg-[color:color-mix(in_srgb,var(--color-tape)_16%,transparent)] data-[state=checked]:font-medium data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "relative flex w-full cursor-pointer select-none items-center rounded-sm py-2 pe-8 ps-3 text-[length:var(--step-0)] outline-none data-[highlighted]:bg-[color:color-mix(in_srgb,var(--color-blue)_16%,transparent)] data-[state=checked]:font-medium data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       className,
     )}
     {...props}
   >
     <span className="absolute end-2 flex size-4 items-center justify-center">
       <SelectPrimitive.ItemIndicator>
-        <Check className="size-4 text-[color:var(--color-tape-ink)]" aria-hidden="true" />
+        <Check className="size-4 text-[color:var(--color-blue)]" aria-hidden="true" />
       </SelectPrimitive.ItemIndicator>
     </span>
     <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>

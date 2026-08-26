@@ -20,13 +20,31 @@ placeholders correspondants sont clairement commentés dans le code
 
 ## 🟠 Photos & visuels
 
-- [ ] **Photo portrait** d'Ilyass (celle envoyée) au format `.jpg`/`.webp`
-      → 1) déposer le fichier dans `public/images/ilyass-portrait.jpg`
-      → 2) dans `lib/site.ts`, mettre `portrait: "/images/ilyass-portrait.jpg"`
-      (la photo n'a pas pu être récupérée automatiquement ; en attendant, un
-      cadre placeholder aux couleurs de la marque s'affiche sur la page Parcours)
-- [ ] **Logo PhysioFit** en vectoriel (SVG) si vous voulez l'afficher
-- [ ] Éventuelles **photos du cabinet** (salle de soins, matériel)
+> ⚠️ **Important** : envoyez chaque photo comme **fichier joint** (bouton 📎),
+> pas collée dans le message — une image collée s'affiche mais n'est pas
+> enregistrée et ne peut pas être intégrée. Le réseau de l'atelier bloque les
+> sites d'images (Google, Unsplash…), donc les photos doivent venir de vous.
+
+- [ ] **Photo portrait** d'Ilyass (blouse, cabinet), `.jpg`/`.webp`, cadrage
+      **portrait 3:4**, ~1200×1600 px min.
+      → 1) déposer dans `public/images/ilyass-portrait.jpg`
+      → 2) dans `lib/site.ts` : `portrait: "/images/ilyass-portrait.jpg"`
+      (en attendant, un cadre en arche « IT » aux couleurs de la marque s'affiche)
+- [ ] **Photo du cabinet** (salle de soins), format **4:3**, ~1600×1200 px
+      → `public/images/cabinet.jpg` (emplacement déjà prévu dans la section « À propos »)
+- [ ] Photos de **séances / gestes** (mains sur patient, rééducation, dry
+      needling, cupping) — utiles pour enrichir les pages soins plus tard.
+- [ ] **Logo PhysioFit** en vectoriel (SVG) si vous voulez l'afficher.
+
+## 🔵 Visuels 3D (optionnel — remplacer les SVG au trait)
+
+Les visuels anatomiques du site (genou, colonne, épaule, main) sont des tracés
+SVG. Vous pourrez faire produire des **rendus 3D en verre bleu-vert** pour les
+remplacer. Dimensions à fournir (PNG transparent ou WebP, fond transparent) :
+
+- [ ] **Genou / Colonne / Épaule / Main** — carré **800×800 px** chacun,
+      objet centré, marge ~12%. Déposer dans `public/anatomy/` (`knee.png`, etc.)
+      et me le signaler pour brancher `<AnatomyVisual>` sur les images.
 
 ## 🟡 Textes & contenus
 

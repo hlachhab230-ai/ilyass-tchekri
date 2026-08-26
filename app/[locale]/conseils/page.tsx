@@ -46,7 +46,7 @@ export default async function ConseilsPage({
             href={site.instagram.personal.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-2 font-mono text-[length:var(--step--1)] uppercase tracking-wide text-[color:var(--color-tape)] hover:opacity-80"
+            className="mt-6 inline-flex items-center gap-2 font-mono text-[length:var(--step--1)] uppercase tracking-wide text-[color:var(--color-blue)] hover:opacity-80"
           >
             <Instagram className="size-4" aria-hidden="true" />
             {site.instagram.personal.handle}
@@ -62,7 +62,7 @@ export default async function ConseilsPage({
             </Reveal>
           ))}
         </div>
-        <p className="mt-10 text-[length:var(--step--1)] text-[color:var(--color-slate)]">
+        <p className="mt-10 text-[length:var(--step--1)] text-[color:var(--color-muted)]">
           {t("note")}
         </p>
       </div>

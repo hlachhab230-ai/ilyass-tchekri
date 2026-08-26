@@ -1,35 +1,58 @@
-import { getTranslations } from "next-intl/server";
-import { Reveal } from "@/components/Reveal";
+"use client";
+
+import * as React from "react";
+import { useTranslations } from "next-intl";
 
 type Step = { title: string; desc: string };
 
-/** Le déroulé d'une séance — 4 étapes numérotées (seule section numérotée). */
-export async function SessionFlow() {
-  const t = await getTranslations("session");
+/**
+ * Le déroulé d'une séance — 4 étapes 01→04, ligne de progression lime qui se
+ * remplit au scroll. prefers-reduced-motion : remplie directement.
+ */
+export function SessionFlow() {
+  const t = useTranslations("session");
   const steps = t.raw("steps") as Step[];
+  const ref = React.useRef<HTMLDivElement | null>(null);
+  const [filled, setFilled] = React.useState(false);
+
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setFilled(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (e) => e.forEach((x) => x.isIntersecting && (setFilled(true), io.disconnect())),
+      { threshold: 0.35 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   return (
-    <section id="deroule" className="scroll-mt-20 bg-[color:var(--color-navy)] text-[color:var(--color-paper)]">
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
-        <Reveal>
-          <h2 className="text-[length:var(--step-4)] font-bold">{t("heading")}</h2>
-          <p className="mt-3 max-w-xl text-[color:color-mix(in_srgb,var(--color-paper)_75%,transparent)]">
-            {t("intro")}
-          </p>
-        </Reveal>
+    <section id="deroule" className="scroll-mt-24 px-5 py-16 sm:px-10 md:py-24">
+      <h2 className="text-[length:var(--step-3)]">{t("heading")}</h2>
+      <p className="mt-3 max-w-xl text-[color:var(--color-muted)]">{t("intro")}</p>
 
-        <ol className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div ref={ref} className="relative mt-12">
+        {/* piste + remplissage lime (horizontal desktop) */}
+        <div className="absolute inset-x-0 top-5 hidden h-0.5 bg-[color:var(--hairline)] md:block">
+          <div
+            className="h-full bg-[color:var(--color-lime)] transition-[width] duration-[1400ms] ease-out"
+            style={{ width: filled ? "100%" : "0%" }}
+          />
+        </div>
+
+        <ol className="grid gap-8 md:grid-cols-4">
           {steps.map((step, i) => (
-            <Reveal as="li" key={i} delayMs={Math.min(i * 80, 320)} className="relative">
-              <div className="font-mono text-[length:var(--step-2)] font-medium tabular-nums text-[color:var(--color-tape)]">
+            <li key={i} className="relative">
+              <div className="mb-4 grid size-10 place-items-center rounded-full border border-[color:var(--hairline)] bg-white font-display text-[length:var(--step-0)] text-[color:var(--color-ink)]">
                 {String(i + 1).padStart(2, "0")}
               </div>
-              <div className="mt-3 h-px w-10 bg-[color:color-mix(in_srgb,var(--color-tape)_60%,transparent)]" />
-              <h3 className="mt-4 text-[length:var(--step-1)] font-bold">{step.title}</h3>
-              <p className="mt-2 text-[length:var(--step-0)] text-[color:color-mix(in_srgb,var(--color-paper)_74%,transparent)]">
-                {step.desc}
-              </p>
-            </Reveal>
+              <h3 className="text-[length:var(--step-1)]">{step.title}</h3>
+              <p className="mt-2 text-[length:var(--step--1)] text-[color:var(--color-muted)]">{step.desc}</p>
+            </li>
           ))}
         </ol>
       </div>

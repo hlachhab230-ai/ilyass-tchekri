@@ -78,14 +78,14 @@ export default async function ArticlePage({
       <div className="mx-auto max-w-2xl px-4 py-14 sm:px-6 md:py-20">
         <Link
           href="/conseils"
-          className="inline-flex items-center gap-1.5 font-mono text-[length:var(--step--1)] uppercase tracking-wide text-[color:var(--color-slate)] hover:text-[color:var(--color-ink)]"
+          className="inline-flex items-center gap-1.5 font-mono text-[length:var(--step--1)] uppercase tracking-wide text-[color:var(--color-muted)] hover:text-[color:var(--color-ink)]"
         >
           <ArrowRight className={`size-4 ${isRtl ? "" : "rotate-180"}`} aria-hidden="true" />
           {tc("seeAll")}
         </Link>
 
-        <div className="mt-8 flex flex-wrap items-center gap-3 font-mono text-[length:var(--step--1)] uppercase tracking-wide text-[color:var(--color-slate)]">
-          <span className="text-[color:var(--color-tape-ink)]">{article.tag[locale]}</span>
+        <div className="mt-8 flex flex-wrap items-center gap-3 font-mono text-[length:var(--step--1)] uppercase tracking-wide text-[color:var(--color-muted)]">
+          <span className="text-[color:var(--color-blue)]">{article.tag[locale]}</span>
           <span aria-hidden="true">·</span>
           <time dateTime={article.date} className="tabular-nums">{dateLabel}</time>
           <span aria-hidden="true">·</span>
@@ -97,22 +97,22 @@ export default async function ArticlePage({
         <h1 className="mt-4 text-[length:var(--step-4)] font-extrabold text-[color:var(--color-ink)]">
           {article.title[locale]}
         </h1>
-        <p className="mt-4 text-[length:var(--step-1)] text-[color:var(--color-slate)]">
+        <p className="mt-4 text-[length:var(--step-1)] text-[color:var(--color-muted)]">
           {article.excerpt[locale]}
         </p>
 
         {/* Le corps des articles est rédigé en français. */}
         {locale === "ar" && (
-          <p className="mt-6 rounded-md border border-[color:var(--border-hair)] bg-white/50 px-4 py-3 text-[length:var(--step--1)] text-[color:var(--color-slate)]">
+          <p className="mt-6 rounded-md border border-[color:var(--hairline)] bg-white/50 px-4 py-3 text-[length:var(--step--1)] text-[color:var(--color-muted)]">
             المقال متوفر حالياً باللغة الفرنسية.
           </p>
         )}
 
-        <div className="mt-8 border-t border-[color:var(--border-hair)] pt-4">
+        <div className="mt-8 border-t border-[color:var(--hairline)] pt-4">
           <Body />
         </div>
 
-        <div className="mt-10 rounded-lg border border-[color:var(--border-hair)] bg-white/50 p-4 text-[length:var(--step--1)] text-[color:var(--color-slate)]">
+        <div className="mt-10 rounded-lg border border-[color:var(--hairline)] bg-white/50 p-4 text-[length:var(--step--1)] text-[color:var(--color-muted)]">
           {tc("note")}
         </div>
 

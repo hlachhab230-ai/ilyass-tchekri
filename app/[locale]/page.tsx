@@ -2,10 +2,11 @@ import { setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import { localBusinessJsonLd } from "@/lib/jsonld";
 import { Hero } from "@/components/sections/Hero";
-import { DomainsBand } from "@/components/sections/DomainsBand";
-import { CareGrid } from "@/components/sections/CareGrid";
+import { CareCards } from "@/components/sections/CareCards";
+import { About } from "@/components/sections/About";
+import { StatsBand } from "@/components/sections/StatsBand";
 import { SessionFlow } from "@/components/sections/SessionFlow";
-import { ParcoursTeaser } from "@/components/sections/ParcoursTeaser";
+import { TechniquesAccordion } from "@/components/sections/TechniquesAccordion";
 import { AdviceTeaser } from "@/components/sections/AdviceTeaser";
 import { BookingSection } from "@/components/sections/BookingSection";
 
@@ -23,18 +24,15 @@ export default async function HomePage({
     <>
       <script
         type="application/ld+json"
-        // Données statiques (aucune entrée utilisateur). On échappe tout de même
-        // `<` en < par défense en profondeur (évite un breakout </script>).
         // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
       <Hero />
-      <DomainsBand />
-      <CareGrid />
+      <CareCards />
+      <About />
+      <StatsBand />
       <SessionFlow />
-      <ParcoursTeaser />
+      <TechniquesAccordion />
       <AdviceTeaser />
       <BookingSection />
     </>

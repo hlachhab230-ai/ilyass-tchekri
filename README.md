@@ -100,17 +100,22 @@ Gardez les deux fichiers synchronisés (mêmes clés).
 
 ---
 
-## Design system (repères)
+## Design system — « medical glass »
 
 - Tokens couleurs & fontes : `app/globals.css` (`@theme` + `:root`).
-- Palette : `--ink #0B1733`, `--navy #14265A`, `--slate #55648C`,
-  `--paper #F1F4F9`, `--tape #00C4A7` (accent), `--ember #FF6A4D` (alerte).
-  `--tape-ink #007A6B` = teal accessible pour **texte/icônes sur fond clair**
-  (le teal vif échoue au contraste AA sur le fond clair).
-- Fontes : Bricolage Grotesque (titres), Inter Tight (texte),
-  JetBrains Mono (données), Noto Kufi Arabic (arabe) — toutes via `next/font`.
-- Élément signature : le goniomètre animé `components/hero/Goniometer.tsx`.
-- `prefers-reduced-motion` est respecté partout.
+- Palette : `--ink #0A2C6B`, `--blue #1B58C7`, `--sky #A9C6E8`, `--ice #EDF3FC`,
+  `--lime #6FE04A` (accent d'ACTION uniquement — jamais de texte, jamais un fond
+  de section), `--aqua #35C9C0` (dégradés des visuels), `--muted #6B7C99`,
+  `--glass`/`--glass-solid` (surfaces en verre), `--color-error` (formulaire).
+- Fontes : **Anton** (titres capitales), **Inter** (texte), **Cairo** (arabe —
+  Anton n'a pas de glyphes arabes) — via `next/font`, `display: swap`.
+- **Les 6 composants** (`components/glass/`) : `PillButton`, `GlassCard`,
+  `FloatingBadge`, `ArchMask` (portrait + halo), `RotatedTag`, `Backdrop`
+  (filigrane) + le panneau flottant dans `app/[locale]/layout.tsx`.
+- Visuels anatomiques : `components/visuals/AnatomyVisual.tsx` (SVG au trait,
+  tracé animé). Voir aussi la page **`/kitchen-sink`** (noindex) qui affiche tous
+  les composants.
+- `prefers-reduced-motion` est respecté partout (flottement, tracé, reveal).
 
 ---
 

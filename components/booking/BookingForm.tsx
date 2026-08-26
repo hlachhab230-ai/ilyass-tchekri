@@ -121,17 +121,17 @@ export function BookingForm() {
     return (
       <div
         id="booking-form"
-        className="rounded-xl border border-[color:var(--color-tape)] bg-[color:color-mix(in_srgb,var(--color-tape)_8%,transparent)] p-6 sm:p-8"
+        className="rounded-xl border border-[color:var(--color-blue)] bg-[color:color-mix(in_srgb,var(--color-blue)_8%,transparent)] p-6 sm:p-8"
       >
         <div className="flex items-start gap-3">
-          <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-full bg-[color:var(--color-tape)] text-[color:var(--color-ink)]">
+          <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-full bg-[color:var(--color-blue)] text-[color:var(--color-ink)]">
             <Check className="size-5" aria-hidden="true" />
           </span>
           <div>
             <p className="text-[length:var(--step-1)] font-medium text-[color:var(--color-ink)]">
               {t("form.success")}
             </p>
-            <p className="mt-1 text-[color:var(--color-slate)]">
+            <p className="mt-1 text-[color:var(--color-muted)]">
               {t("form.successMailtoHint")}
             </p>
           </div>
@@ -151,7 +151,7 @@ export function BookingForm() {
         <button
           type="button"
           onClick={() => setResult(null)}
-          className="mt-4 text-[length:var(--step--1)] text-[color:var(--color-slate)] underline underline-offset-4 hover:text-[color:var(--color-ink)]"
+          className="mt-4 text-[length:var(--step--1)] text-[color:var(--color-muted)] underline underline-offset-4 hover:text-[color:var(--color-ink)]"
         >
           {t("form.reset")}
         </button>
@@ -164,7 +164,7 @@ export function BookingForm() {
       id="booking-form"
       noValidate
       onSubmit={submit("wa")}
-      className="rounded-xl border border-[color:var(--border-hair)] bg-white/40 p-5 sm:p-7"
+      className="rounded-xl border border-[color:var(--hairline)] bg-white/40 p-5 sm:p-7"
     >
       <div className="grid gap-5">
         {/* Nom */}
@@ -178,7 +178,7 @@ export function BookingForm() {
             {...register("name")}
           />
           {errors.name && (
-            <p id="name-err" className="text-[length:var(--step--1)] text-[color:var(--color-ember)]">
+            <p id="name-err" className="text-[length:var(--step--1)] text-[color:var(--color-error)]">
               {err(errors.name.message)}
             </p>
           )}
@@ -198,11 +198,11 @@ export function BookingForm() {
             aria-describedby={errors.phone ? "phone-err phone-hint" : "phone-hint"}
             {...register("phone")}
           />
-          <p id="phone-hint" className="font-mono text-[length:var(--step--1)] text-[color:var(--color-slate)]">
+          <p id="phone-hint" className="font-mono text-[length:var(--step--1)] text-[color:var(--color-muted)]">
             {t("form.phoneHint")}
           </p>
           {errors.phone && (
-            <p id="phone-err" className="text-[length:var(--step--1)] text-[color:var(--color-ember)]">
+            <p id="phone-err" className="text-[length:var(--step--1)] text-[color:var(--color-error)]">
               {err(errors.phone.message)}
             </p>
           )}
@@ -237,7 +237,7 @@ export function BookingForm() {
             )}
           />
           {errors.reason && (
-            <p id="reason-err" className="text-[length:var(--step--1)] text-[color:var(--color-ember)]">
+            <p id="reason-err" className="text-[length:var(--step--1)] text-[color:var(--color-error)]">
               {err(errors.reason.message)}
             </p>
           )}
@@ -245,7 +245,7 @@ export function BookingForm() {
 
         {/* Type de visite */}
         <fieldset className="grid gap-1.5">
-          <legend className="font-mono text-[length:var(--step--1)] uppercase tracking-wide text-[color:var(--color-slate)]">
+          <legend className="font-mono text-[length:var(--step--1)] uppercase tracking-wide text-[color:var(--color-muted)]">
             {t("form.visit")}
           </legend>
           <Controller
@@ -263,7 +263,7 @@ export function BookingForm() {
             )}
           />
           {errors.visitType && (
-            <p className="text-[length:var(--step--1)] text-[color:var(--color-ember)]">
+            <p className="text-[length:var(--step--1)] text-[color:var(--color-error)]">
               {err(errors.visitType.message)}
             </p>
           )}
@@ -286,9 +286,9 @@ export function BookingForm() {
                     aria-invalid={!!errors.preferredDate}
                     aria-describedby={errors.preferredDate ? "date-err" : undefined}
                     onClick={() => setShowCal((v) => !v)}
-                    className="flex h-11 w-full items-center justify-between rounded-md border border-[color:var(--border-hair)] bg-white/60 px-3.5 text-start text-[length:var(--step-0)] transition-colors hover:border-[color:var(--color-tape)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-tape-ink)] aria-[invalid=true]:border-[color:var(--color-ember)]"
+                    className="flex h-11 w-full items-center justify-between rounded-md border border-[color:var(--hairline)] bg-white/60 px-3.5 text-start text-[length:var(--step-0)] transition-colors hover:border-[color:var(--color-blue)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-blue)] aria-[invalid=true]:border-[color:var(--color-error)]"
                   >
-                    <span className={selectedDate ? "text-[color:var(--color-ink)]" : "text-[color:color-mix(in_srgb,var(--color-slate)_75%,transparent)]"}>
+                    <span className={selectedDate ? "text-[color:var(--color-ink)]" : "text-[color:color-mix(in_srgb,var(--color-muted)_75%,transparent)]"}>
                       {selectedDate
                         ? format(selectedDate, "PPPP", { locale: dfLocale })
                         : t("form.datePlaceholder")}
@@ -296,7 +296,7 @@ export function BookingForm() {
                     <CalendarDays className="size-4 opacity-60" aria-hidden="true" />
                   </button>
                   {showCal && (
-                    <div className="mt-2 w-fit rounded-md border border-[color:var(--border-hair)] bg-[color:var(--color-paper)] p-2">
+                    <div className="mt-2 w-fit rounded-md border border-[color:var(--hairline)] bg-[color:var(--color-paper)] p-2">
                       <Calendar
                         locale={locale}
                         selected={selectedDate}
@@ -313,7 +313,7 @@ export function BookingForm() {
             }}
           />
           {errors.preferredDate && (
-            <p id="date-err" className="text-[length:var(--step--1)] text-[color:var(--color-ember)]">
+            <p id="date-err" className="text-[length:var(--step--1)] text-[color:var(--color-error)]">
               {err(errors.preferredDate.message)}
             </p>
           )}
@@ -321,7 +321,7 @@ export function BookingForm() {
 
         {/* Créneau */}
         <div className="grid gap-1.5">
-          <span id="slot-label" className="font-mono text-[length:var(--step--1)] uppercase tracking-wide text-[color:var(--color-slate)]">
+          <span id="slot-label" className="font-mono text-[length:var(--step--1)] uppercase tracking-wide text-[color:var(--color-muted)]">
             {t("form.slot")}
           </span>
           <Controller
@@ -337,12 +337,12 @@ export function BookingForm() {
             )}
           />
           {watchedDate && availableSlots.length === 0 && (
-            <p className="text-[length:var(--step--1)] text-[color:var(--color-slate)]">
+            <p className="text-[length:var(--step--1)] text-[color:var(--color-muted)]">
               {t("form.closedDay")}
             </p>
           )}
           {errors.preferredSlot && (
-            <p className="text-[length:var(--step--1)] text-[color:var(--color-ember)]">
+            <p className="text-[length:var(--step--1)] text-[color:var(--color-error)]">
               {err(errors.preferredSlot.message)}
             </p>
           )}
@@ -352,7 +352,7 @@ export function BookingForm() {
         <div className="grid gap-1.5">
           <Label htmlFor="message">
             {t("form.message")}{" "}
-            <span className="normal-case text-[color:color-mix(in_srgb,var(--color-slate)_80%,transparent)]">
+            <span className="normal-case text-[color:color-mix(in_srgb,var(--color-muted)_80%,transparent)]">
               {t("form.messageOptional")}
             </span>
           </Label>
@@ -364,7 +364,7 @@ export function BookingForm() {
             {...register("message")}
           />
           {errors.message && (
-            <p id="message-err" className="text-[length:var(--step--1)] text-[color:var(--color-ember)]">
+            <p id="message-err" className="text-[length:var(--step--1)] text-[color:var(--color-error)]">
               {err(errors.message.message)}
             </p>
           )}

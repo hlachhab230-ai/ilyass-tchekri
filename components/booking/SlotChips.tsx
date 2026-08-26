@@ -34,12 +34,12 @@ export function SlotChips({
             disabled={disabled}
             onClick={() => !disabled && onChange(slot)}
             className={cn(
-              "rounded-full border px-3.5 py-2 font-mono text-[length:var(--step--1)] tabular-nums transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-tape-ink)]",
+              "rounded-full border px-3.5 py-2 font-mono text-[length:var(--step--1)] tabular-nums transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-blue)]",
               active
-                ? "border-[color:var(--color-tape)] bg-[color:var(--color-tape)] text-[color:var(--color-ink)]"
+                ? "border-[color:var(--color-blue)] bg-[color:var(--color-blue)] text-[color:var(--color-ink)]"
                 : disabled
-                  ? "cursor-not-allowed border-[color:var(--border-hair)] text-[color:color-mix(in_srgb,var(--color-slate)_45%,transparent)] line-through"
-                  : "border-[color:var(--border-hair)] text-[color:var(--color-slate)] hover:border-[color:var(--color-tape)] hover:text-[color:var(--color-ink)]",
+                  ? "cursor-not-allowed border-[color:var(--hairline)] text-[color:color-mix(in_srgb,var(--color-muted)_45%,transparent)] line-through"
+                  : "border-[color:var(--hairline)] text-[color:var(--color-muted)] hover:border-[color:var(--color-blue)] hover:text-[color:var(--color-ink)]",
             )}
           >
             {slot}

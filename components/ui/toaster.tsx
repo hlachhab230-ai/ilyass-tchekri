@@ -11,7 +11,7 @@ export function Toaster() {
         style: {
           background: "var(--color-ink)",
           color: "var(--color-paper)",
-          border: "1px solid color-mix(in srgb, var(--color-tape) 40%, transparent)",
+          border: "1px solid color-mix(in srgb, var(--color-blue) 40%, transparent)",
           fontFamily: "var(--font-sans)",
         },
       }}

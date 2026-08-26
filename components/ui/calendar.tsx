@@ -38,10 +38,10 @@ export function Calendar({
       // Teal du kinesio tape comme accent du calendrier.
       style={
         {
-          "--rdp-accent-color": "var(--color-tape)",
+          "--rdp-accent-color": "var(--color-blue)",
           "--rdp-accent-background-color":
-            "color-mix(in srgb, var(--color-tape) 16%, transparent)",
-          "--rdp-today-color": "var(--color-ember)",
+            "color-mix(in srgb, var(--color-blue) 16%, transparent)",
+          "--rdp-today-color": "var(--color-error)",
           "--rdp-day-width": "2.4rem",
           "--rdp-day-height": "2.4rem",
           "--rdp-day_button-width": "2.4rem",

@@ -37,7 +37,7 @@ export default async function LegalPage({
   const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
     <section className="mt-8">
       <h2 className="text-[length:var(--step-2)] font-bold text-[color:var(--color-ink)]">{title}</h2>
-      <div className="mt-2 text-[color:var(--color-slate)] leading-relaxed">{children}</div>
+      <div className="mt-2 text-[color:var(--color-muted)] leading-relaxed">{children}</div>
     </section>
   );
 
@@ -53,7 +53,7 @@ export default async function LegalPage({
 
         <Section title={t("dataTitle")}>
           <p>{t("dataIntro")}</p>
-          <ul className="mt-3 space-y-1.5 ps-5 list-disc marker:text-[color:var(--color-tape-ink)]">
+          <ul className="mt-3 space-y-1.5 ps-5 list-disc marker:text-[color:var(--color-blue)]">
             {dataItems.map((item) => (
               <li key={item}>{item}</li>
             ))}
@@ -68,12 +68,12 @@ export default async function LegalPage({
         <Section title={t("contactTitle")}>
           <ul className="space-y-1">
             <li>
-              <a href={`tel:${site.phone.tel}`} className="font-mono hover:text-[color:var(--color-tape-ink)]" dir="ltr">
+              <a href={`tel:${site.phone.tel}`} className="font-mono hover:text-[color:var(--color-blue)]" dir="ltr">
                 {site.phone.display}
               </a>
             </li>
             <li>
-              <a href={`mailto:${site.email}`} className="break-all hover:text-[color:var(--color-tape-ink)]">
+              <a href={`mailto:${site.email}`} className="break-all hover:text-[color:var(--color-blue)]">
                 {site.email}
               </a>
             </li>

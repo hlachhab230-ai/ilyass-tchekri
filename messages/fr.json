@@ -20,14 +20,42 @@
     "close": "Fermer"
   },
   "hero": {
+    "eyebrow": "Kiné · Thérapie manuelle",
+    "l1": "Soigner",
+    "l2": "la cause",
+    "l3": "pas le symptôme",
     "title": "Traiter la cause, pas seulement le symptôme.",
     "subtitle": "Kinésithérapie et thérapie manuelle orthopédique à M'diq et Tétouan. La rééducation manuelle avant les machines, pour retrouver le mouvement en confiance.",
     "primaryCta": "Prendre rendez-vous",
     "secondaryCta": "Écrire sur WhatsApp",
+    "badgeYears": "clinique hospitalière",
+    "badgeTrainings": "formations spécialisées",
     "goniometer": {
       "label": "GENOU · FLEXION",
       "sublabel": "amplitude retrouvée"
     }
+  },
+  "stats": {
+    "heading": "Une expérience de terrain",
+    "years": { "value": "3 ans", "label": "clinique hospitalière" },
+    "structures": { "value": "5", "label": "structures de soins" },
+    "trainings": { "value": "7", "label": "formations spécialisées" },
+    "languages": { "value": "4", "label": "langues parlées" }
+  },
+  "about": {
+    "badge": "À propos",
+    "heading": "La rééducation manuelle, d'abord",
+    "body": "Kinésithérapeute et thérapeute manuel orthopédique à M'diq et Tétouan, j'accompagne chaque patient d'un bilan précis jusqu'à l'autonomie. Traiter la cause du mouvement douloureux, pas seulement le symptôme.",
+    "sinceLabel": "En exercice depuis",
+    "sinceValue": "2022",
+    "sincePhrase": "Formé entre hôpital, centre régional et cabinet.",
+    "phoneLabel": "Appeler le cabinet",
+    "cta": "Découvrir mon parcours"
+  },
+  "techniques": {
+    "heading": "Techniques",
+    "intro": "Des techniques complémentaires, utilisées uniquement lorsqu'elles sont indiquées, en appui de la thérapie manuelle.",
+    "expand": "Voir l'explication"
   },
   "domains": {
     "srLabel": "Domaines de prise en charge"

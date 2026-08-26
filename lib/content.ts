@@ -223,6 +223,59 @@ export const techniques: Bilingual[] = [
   { fr: "Auto-rééducation guidée", ar: "إعادة التأهيل الذاتي الموجَّه" },
 ];
 
+/** Techniques + courte explication (pour l'accordéon de la section Techniques). */
+export const techniqueDetails: { name: Bilingual; desc: Bilingual }[] = [
+  {
+    name: { fr: "Thérapie manuelle orthopédique", ar: "العلاج اليدوي لجهاز الحركة" },
+    desc: {
+      fr: "Mobilisations et manipulations des articulations et des tissus pour restaurer le mouvement, en priorité avant les machines.",
+      ar: "تحريك ومعالجة المفاصل والأنسجة يدوياً لاستعادة الحركة، قبل اللجوء إلى الأجهزة.",
+    },
+  },
+  {
+    name: { fr: "Dry needling", ar: "الإبر الجافة (Dry needling)" },
+    desc: {
+      fr: "Aiguilles fines insérées dans les points de tension musculaire pour relâcher la douleur et améliorer la fonction.",
+      ar: "إبر رفيعة تُغرز في نقاط التوتر العضلي لتخفيف الألم وتحسين الأداء.",
+    },
+  },
+  {
+    name: { fr: "Cupping therapy", ar: "العلاج بالحجامة" },
+    desc: {
+      fr: "Ventouses créant une aspiration pour décoller les tissus, améliorer la circulation et détendre les muscles.",
+      ar: "كؤوس تُحدث شفطاً لفصل الأنسجة وتحسين الدورة الدموية وإرخاء العضلات.",
+    },
+  },
+  {
+    name: { fr: "Drainage lymphatique manuel", ar: "التصريف اللمفاوي اليدوي" },
+    desc: {
+      fr: "Manœuvres douces qui stimulent la circulation lymphatique pour réduire les œdèmes après blessure ou chirurgie.",
+      ar: "حركات لطيفة تنشّط الدورة اللمفاوية لتقليل الوذمات بعد الإصابة أو الجراحة.",
+    },
+  },
+  {
+    name: { fr: "Gua sha", ar: "الغوا شا (Gua sha)" },
+    desc: {
+      fr: "Effleurage instrumenté des tissus mous pour libérer les tensions et favoriser la récupération.",
+      ar: "تمرير أداة على الأنسجة الرخوة لتحرير التوترات وتعزيز التعافي.",
+    },
+  },
+  {
+    name: { fr: "Gymnastique médicale", ar: "الجمباز الطبي" },
+    desc: {
+      fr: "Exercices thérapeutiques encadrés pour renforcer, mobiliser et réapprendre le geste juste.",
+      ar: "تمارين علاجية مؤطَّرة للتقوية وتحسين الحركة وإعادة تعلّم الحركة الصحيحة.",
+    },
+  },
+  {
+    name: { fr: "Auto-rééducation guidée", ar: "إعادة التأهيل الذاتي الموجَّه" },
+    desc: {
+      fr: "Un programme d'exercices simples à poursuivre chez vous, expliqué et adapté à votre progression.",
+      ar: "برنامج تمارين بسيطة للاستمرار في المنزل، مشروح وملائم لتقدّمك.",
+    },
+  },
+];
+
 export function getSoin(slug: string): Soin | undefined {
   return soins.find((s) => s.slug === slug);
 }
