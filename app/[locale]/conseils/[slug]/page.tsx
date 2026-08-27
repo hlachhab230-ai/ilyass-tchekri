@@ -78,13 +78,13 @@ export default async function ArticlePage({
       <div className="mx-auto max-w-2xl px-4 py-14 sm:px-6 md:py-20">
         <Link
           href="/conseils"
-          className="inline-flex items-center gap-1.5 font-mono text-[length:var(--step--1)] uppercase tracking-wide text-[color:var(--color-muted)] hover:text-[color:var(--color-ink)]"
+          className="inline-flex items-center gap-1.5 text-[length:var(--step--1)] uppercase tracking-wide text-[color:var(--color-muted)] hover:text-[color:var(--color-ink)]"
         >
           <ArrowRight className={`size-4 ${isRtl ? "" : "rotate-180"}`} aria-hidden="true" />
           {tc("seeAll")}
         </Link>
 
-        <div className="mt-8 flex flex-wrap items-center gap-3 font-mono text-[length:var(--step--1)] uppercase tracking-wide text-[color:var(--color-muted)]">
+        <div className="mt-8 flex flex-wrap items-center gap-3 text-[length:var(--step--1)] uppercase tracking-wide text-[color:var(--color-muted)]">
           <span className="text-[color:var(--color-blue)]">{article.tag[locale]}</span>
           <span aria-hidden="true">·</span>
           <time dateTime={article.date} className="tabular-nums">{dateLabel}</time>

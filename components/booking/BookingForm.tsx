@@ -225,7 +225,7 @@ export function BookingForm() {
             aria-describedby={errors.phone ? "phone-err phone-hint" : "phone-hint"}
             {...register("phone")}
           />
-          <p id="phone-hint" className="font-mono text-[length:var(--step--1)] text-[color:var(--color-muted)]">
+          <p id="phone-hint" className="text-[length:var(--step--1)] text-[color:var(--color-muted)]">
             {t("form.phoneHint")}
           </p>
           {errors.phone && (
@@ -272,7 +272,7 @@ export function BookingForm() {
 
         {/* Type de visite */}
         <fieldset className="grid gap-1.5">
-          <legend className="font-mono text-[length:var(--step--1)] uppercase tracking-wide text-[color:var(--color-muted)]">
+          <legend className="text-[length:var(--step--1)] uppercase tracking-wide text-[color:var(--color-muted)]">
             {t("form.visit")}
           </legend>
           <Controller
@@ -349,7 +349,7 @@ export function BookingForm() {
 
         {/* Créneau */}
         <div className="grid gap-1.5">
-          <span id="slot-label" className="font-mono text-[length:var(--step--1)] uppercase tracking-wide text-[color:var(--color-muted)]">
+          <span id="slot-label" className="text-[length:var(--step--1)] uppercase tracking-wide text-[color:var(--color-muted)]">
             {t("form.slot")}
           </span>
           <Controller

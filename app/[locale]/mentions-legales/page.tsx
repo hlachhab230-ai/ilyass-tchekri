@@ -68,7 +68,7 @@ export default async function LegalPage({
         <Section title={t("contactTitle")}>
           <ul className="space-y-1">
             <li>
-              <a href={`tel:${site.phone.tel}`} className="font-mono hover:text-[color:var(--color-blue)]" dir="ltr">
+              <a href={`tel:${site.phone.tel}`} className="hover:text-[color:var(--color-blue)]" dir="ltr">
                 {site.phone.display}
               </a>
             </li>

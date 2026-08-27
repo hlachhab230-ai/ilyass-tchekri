@@ -34,7 +34,7 @@ export function SlotChips({
             disabled={disabled}
             onClick={() => !disabled && onChange(slot)}
             className={cn(
-              "rounded-full border px-3.5 py-2 font-mono text-[length:var(--step--1)] tabular-nums transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-blue)]",
+              "rounded-full border px-3.5 py-2 text-[length:var(--step--1)] tabular-nums transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-blue)]",
               active
                 ? "border-[color:var(--color-blue)] bg-[color:var(--color-blue)] text-[color:var(--color-ink)]"
                 : disabled

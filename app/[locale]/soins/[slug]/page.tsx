@@ -57,8 +57,8 @@ export default async function SoinPage({
       <div className="bg-[color:var(--color-ink)] text-[color:var(--color-paper)]">
         <div className="mx-auto max-w-4xl px-4 py-14 sm:px-6 md:py-20">
           <Link
-            href="/#soins"
-            className="inline-flex items-center gap-1.5 font-mono text-[length:var(--step--1)] uppercase tracking-wide text-[color:color-mix(in_srgb,var(--color-paper)_70%,transparent)] hover:text-[color:var(--color-blue)]"
+            href="/soins"
+            className="inline-flex items-center gap-1.5 text-[length:var(--step--1)] uppercase tracking-wide text-[color:color-mix(in_srgb,var(--color-paper)_70%,transparent)] hover:text-[color:var(--color-sky)]"
           >
             <ArrowRight className={`size-4 ${isRtl ? "" : "rotate-180"}`} aria-hidden="true" />
             {t("allSoins")}
@@ -74,7 +74,7 @@ export default async function SoinPage({
       <div className="mx-auto grid max-w-4xl gap-12 px-4 py-14 sm:px-6 md:grid-cols-2 md:py-20">
         {/* Motifs pris en charge */}
         <section>
-          <h2 className="font-mono text-[length:var(--step--1)] uppercase tracking-widest text-[color:var(--color-muted)]">
+          <h2 className="text-[length:var(--step--1)] uppercase tracking-widest text-[color:var(--color-muted)]">
             {t("conditionsTitle")}
           </h2>
           <ul className="mt-4 space-y-3">
@@ -89,7 +89,7 @@ export default async function SoinPage({
 
         {/* Ma prise en charge */}
         <section>
-          <h2 className="font-mono text-[length:var(--step--1)] uppercase tracking-widest text-[color:var(--color-muted)]">
+          <h2 className="text-[length:var(--step--1)] uppercase tracking-widest text-[color:var(--color-muted)]">
             {t("approachTitle")}
           </h2>
           <ul className="mt-4 space-y-3">

@@ -68,7 +68,7 @@ export default async function ParcoursPage({
                   </div>
                   <div className="mt-1 text-[color:var(--color-muted)]">{exp.role[locale]}</div>
                 </div>
-                <div className="font-mono text-[length:var(--step--1)] uppercase tracking-wide text-[color:var(--color-blue)]">
+                <div className="text-[length:var(--step--1)] uppercase tracking-wide text-[color:var(--color-blue)]">
                   {exp.location[locale]}
                 </div>
               </li>
@@ -84,7 +84,7 @@ export default async function ParcoursPage({
           <div className="mt-6 space-y-6">
             {formations.map((f) => (
               <div key={f.year} className="grid gap-2 sm:grid-cols-[7rem_1fr] sm:gap-6">
-                <div className="font-mono text-[length:var(--step-0)] tabular-nums text-[color:var(--color-blue)]">
+                <div className="text-[length:var(--step-0)] tabular-nums text-[color:var(--color-blue)]">
                   {f.year}
                 </div>
                 <ul className="space-y-1.5">
@@ -109,7 +109,7 @@ export default async function ParcoursPage({
               {techniques.map((tech) => (
                 <li
                   key={tech.fr}
-                  className="rounded-full border border-[color:var(--hairline)] px-3.5 py-1.5 font-mono text-[length:var(--step--1)] text-[color:var(--color-muted)]"
+                  className="rounded-full border border-[color:var(--hairline)] px-3.5 py-1.5 text-[length:var(--step--1)] text-[color:var(--color-muted)]"
                 >
                   {tech[locale]}
                 </li>

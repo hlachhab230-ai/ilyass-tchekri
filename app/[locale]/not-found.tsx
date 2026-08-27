@@ -7,7 +7,7 @@ export default async function NotFound() {
 
   return (
     <div className="mx-auto flex min-h-[60vh] max-w-2xl flex-col items-center justify-center px-4 py-20 text-center">
-      <p className="font-mono text-[length:var(--step-2)] tabular-nums text-[color:var(--color-blue)]">
+      <p className="text-[length:var(--step-2)] tabular-nums text-[color:var(--color-blue)]">
         404
       </p>
       <h1 className="mt-4 text-[length:var(--step-3)] font-bold text-[color:var(--color-ink)]">
