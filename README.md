@@ -152,14 +152,23 @@ WhatsApp côté patient.
 
 ## Déployer sur Vercel
 
-1. Poussez le dépôt sur GitHub.
-2. Sur [vercel.com](https://vercel.com) → **New Project** → importez le dépôt.
-3. Framework détecté : **Next.js**. Aucune variable d'environnement requise en
-   Phase 1. Cliquez **Deploy**.
-4. Après le déploiement, mettez à jour `site.url` dans `lib/site.ts` avec le
-   domaine réel (ou le domaine personnalisé), puis redéployez — cela corrige
-   les URLs canoniques, le sitemap, `hreflang` et l'Open Graph.
-5. (Optionnel) Domaine personnalisé : onglet **Domains** du projet Vercel.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fhlachhab230-ai%2Fphisioilyass)
+
+**Ou manuellement :**
+
+1. Sur [vercel.com/new](https://vercel.com/new) → connectez-vous **avec GitHub**.
+2. **Import** → sélectionnez le dépôt **`hlachhab230-ai/phisioilyass`**.
+3. Framework détecté : **Next.js**. **Aucune variable d'environnement requise**
+   pour voir le site (Phase 1). Cliquez **Deploy**.
+4. Au bout d'~1 min : une URL type `https://phisioilyass.vercel.app`.
+5. Ensuite, mettez à jour `site.url` dans `lib/site.ts` avec le vrai domaine,
+   puis redéployez (corrige URLs canoniques, sitemap, `hreflang`, Open Graph).
+6. (Optionnel) **Phase 2/3** : ajoutez les variables Supabase/Resend dans
+   **Settings → Environment Variables** (voir `.env.example`), puis redéployez.
+7. (Optionnel) Domaine personnalisé : onglet **Domains** du projet.
+
+> La branche par défaut du dépôt contient déjà tout le code : l'import déploie
+> le site directement, sans manipulation de branche.
 
 ### SEO / accessibilité déjà en place
 
