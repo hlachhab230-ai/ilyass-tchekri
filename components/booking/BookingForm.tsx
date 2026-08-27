@@ -97,6 +97,17 @@ export function BookingForm() {
       const message = buildBookingMessage(data, locale);
       const wa = whatsappLink(message);
       const mailto = mailtoLink(message, locale);
+
+      // Phase 2 : on enregistre la demande (trace en base + email au praticien)
+      // en « fire-and-forget » — cela ne doit JAMAIS bloquer ni retarder
+      // l'ouverture de WhatsApp. Si l'API n'est pas configurée ou échoue, le
+      // flux Phase 1 (WhatsApp) reste intact.
+      void fetch("/api/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...values, locale }),
+      }).catch(() => {});
+
       // On affiche TOUJOURS l'écran de succès en premier : il contient un vrai
       // lien <a> vers WhatsApp que l'utilisateur peut toucher. C'est le chemin
       // fiable — l'ouverture automatique ci-dessous est un « best-effort » qui

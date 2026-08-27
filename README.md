@@ -119,6 +119,37 @@ Gardez les deux fichiers synchronisés (mêmes clés).
 
 ---
 
+## Phase 2 — persistance & notification email
+
+Le formulaire enregistre chaque demande dans **Supabase** (la trace) et notifie
+le praticien par **email via Resend** — en plus d'ouvrir WhatsApp (la
+notification). **Sans configuration, le site fonctionne en Phase 1** (WhatsApp
+seul) : la route `/api/bookings` renvoie alors `persisted:false` sans erreur.
+
+**Mise en route :**
+
+1. **Supabase** — créez un projet sur [supabase.com](https://supabase.com),
+   puis dans **SQL Editor** exécutez `supabase/schema.sql` (crée la table
+   `booking_requests` avec RLS activée).
+2. **Resend** — créez un compte sur [resend.com](https://resend.com), une clé
+   API, et (idéalement) vérifiez votre domaine d'envoi.
+3. **Variables d'environnement** — copiez `.env.example` en `.env.local`
+   (dev) et renseignez `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`,
+   `RESEND_API_KEY`, `RESEND_FROM`, `RESEND_TO`. Sur Vercel : **Settings →
+   Environment Variables** (mêmes clés). La clé `service_role` est **secrète**
+   (serveur uniquement).
+
+**Détails techniques** (`app/api/bookings/route.ts`) : re-validation zod côté
+serveur, honeypot (`company`), rate limiting par IP (5 / 10 min, en mémoire —
+voir `lib/rate-limit.ts` pour la note serverless), insertion Supabase, email
+Resend. Tout est « best-effort » : un échec base/email ne casse jamais l'envoi
+WhatsApp côté patient.
+
+> **Phase 3 (pas encore codée)** : espace `/admin` protégé par Supabase Auth,
+> liste et filtres des demandes, changement de statut, gestion des créneaux.
+
+---
+
 ## Déployer sur Vercel
 
 1. Poussez le dépôt sur GitHub.

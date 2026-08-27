@@ -66,6 +66,18 @@ remplacer. Dimensions à fournir (PNG transparent ou WebP, fond transparent) :
 - [ ] Confirmer les **numéros d'urgence** affichés près du formulaire
       (actuellement : 15 SAMU · 150 Protection civile · 19 Police)
 
+## 🟣 Phase 2 — activer la base + les emails (optionnel)
+
+Le formulaire enregistre les demandes et envoie un email au praticien **si**
+c'est configuré (sinon, WhatsApp seul continue de fonctionner).
+
+- [ ] Créer un projet **Supabase** (gratuit) → exécuter `supabase/schema.sql`
+- [ ] Créer un compte **Resend** (gratuit) → une clé API + email destinataire
+- [ ] Renseigner les variables (voir `.env.example`) dans Vercel :
+      `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`,
+      `RESEND_FROM`, `RESEND_TO`
+- [ ] (Recommandé prod) brancher un rate-limit partagé (Upstash) — voir README
+
 ## ℹ️ Déjà intégré (données réelles fournies)
 
 - Nom, titre, zone (M'diq · Tétouan), cabinet PhysioFit
