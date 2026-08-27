@@ -4,6 +4,7 @@ import { site } from "@/lib/site";
 import { soins } from "@/lib/content";
 import type { Locale } from "@/i18n/routing";
 import { GlassCard } from "@/components/glass/GlassCard";
+import { PageHeader } from "@/components/layout/PageHeader";
 import { AnatomyVisual, type AnatomyName } from "@/components/visuals/AnatomyVisual";
 
 const ANATOMY: Record<string, AnatomyName> = {
@@ -44,13 +45,7 @@ export default async function SoinsIndex({
 
   return (
     <div>
-      <div className="bg-[color:var(--color-ink)] text-white">
-        <div className="px-5 py-14 sm:px-10 md:py-20">
-          <p className="eyebrow text-[color:var(--color-sky)]">{site.area[locale]}</p>
-          <h1 className="mt-3 text-[length:var(--step-4)]">{t("heading")}</h1>
-          <p className="mt-4 max-w-2xl text-[length:var(--step-1)] text-white/80">{t("intro")}</p>
-        </div>
-      </div>
+      <PageHeader eyebrow={site.area[locale]} title={t("heading")} subtitle={t("intro")} />
 
       <div className="px-5 py-14 sm:px-10 md:py-20">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

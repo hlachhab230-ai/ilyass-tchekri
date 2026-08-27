@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { AlertTriangle } from "lucide-react";
 import type { Locale } from "@/i18n/routing";
+import { site } from "@/lib/site";
 import { BookingForm } from "@/components/booking/BookingForm";
 import { PracticalInfo } from "@/components/sections/PracticalInfo";
+import { PageHeader } from "@/components/layout/PageHeader";
 
 export async function generateMetadata({
   params,
@@ -33,20 +35,15 @@ export default async function RendezVousPage({
 
   return (
     <div className="bg-[color:var(--color-paper)]">
-      <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 md:py-16">
-        <h1 className="text-[length:var(--step-4)] font-extrabold text-[color:var(--color-ink)]">
-          {t("heading")}
-        </h1>
-        <p className="mt-3 max-w-2xl text-[length:var(--step-1)] text-[color:var(--color-muted)]">
-          {t("intro")}
-        </p>
+      <PageHeader eyebrow={site.area[locale]} title={t("heading")} subtitle={t("intro")} />
 
+      <div className="px-5 py-12 sm:px-10 md:py-16">
         {/* Avertissement médical, visible près du formulaire */}
-        <div className="mt-6 flex items-start gap-3 rounded-lg border border-[color:color-mix(in_srgb,var(--color-error)_45%,transparent)] bg-[color:color-mix(in_srgb,var(--color-error)_7%,transparent)] p-4">
+        <div className="flex items-start gap-3 rounded-[var(--card-radius)] border border-[color:color-mix(in_srgb,var(--color-error)_45%,transparent)] bg-[color:color-mix(in_srgb,var(--color-error)_7%,transparent)] p-4">
           <AlertTriangle className="mt-0.5 size-5 shrink-0 text-[color:var(--color-error)]" aria-hidden="true" />
           <div>
             <p className="text-[color:var(--color-ink)]">{t("disclaimer.text")}</p>
-            <p className="mt-1 font-mono text-[length:var(--step--1)] tabular-nums text-[color:var(--color-muted)]">
+            <p className="mt-1 text-[length:var(--step--1)] tabular-nums text-[color:var(--color-muted)]">
               {t("disclaimer.emergency")}
             </p>
           </div>

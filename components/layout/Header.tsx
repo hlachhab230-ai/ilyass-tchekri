@@ -3,6 +3,8 @@ import { Link } from "@/i18n/navigation";
 import { site } from "@/lib/site";
 import { PillButton } from "@/components/glass/PillButton";
 import { LocaleSwitcher } from "./LocaleSwitcher";
+import { DesktopNav } from "./DesktopNav";
+import { MobileMenu } from "./MobileMenu";
 import type { Locale } from "@/i18n/routing";
 
 export async function Header() {
@@ -15,6 +17,7 @@ export async function Header() {
     { href: "/parcours", label: t("parcours") },
     { href: "/conseils", label: t("conseils") },
   ];
+  const mobileLinks = [{ href: "/", label: t("home") }, ...links];
 
   return (
     <header className="sticky top-0 z-40 rounded-t-[var(--panel-radius)] border-b border-[color:var(--hairline)] bg-white/85 backdrop-blur-md">
@@ -26,21 +29,12 @@ export async function Header() {
           <span className="eyebrow hidden sm:inline">{site.shortRole[locale]}</span>
         </Link>
 
-        <nav aria-label="Navigation principale" className="hidden items-center gap-7 md:flex">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="text-[length:var(--step-0)] font-medium text-[color:var(--color-muted)] transition-colors hover:text-[color:var(--color-ink)]"
-            >
-              {l.label}
-            </Link>
-          ))}
-        </nav>
+        <DesktopNav links={links} />
 
         <div className="flex items-center gap-2 sm:gap-3">
           <LocaleSwitcher />
           <PillButton href="/rendez-vous" label={t("book")} className="hidden sm:inline-flex" />
+          <MobileMenu links={mobileLinks} bookLabel={t("book")} />
         </div>
       </div>
     </header>

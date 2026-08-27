@@ -5,6 +5,7 @@ import type { Locale } from "@/i18n/routing";
 import { site } from "@/lib/site";
 import { articlesByDate } from "@/lib/content";
 import { ArticleCard } from "@/components/sections/ArticleCard";
+import { PageHeader } from "@/components/layout/PageHeader";
 import { Reveal } from "@/components/Reveal";
 
 export async function generateMetadata({
@@ -36,23 +37,17 @@ export default async function ConseilsPage({
 
   return (
     <div className="bg-[color:var(--color-paper)]">
-      <div className="bg-[color:var(--color-ink)] text-[color:var(--color-paper)]">
-        <div className="mx-auto max-w-5xl px-4 py-14 sm:px-6 md:py-20">
-          <h1 className="text-[length:var(--step-4)] font-extrabold">{t("heading")}</h1>
-          <p className="mt-4 max-w-2xl text-[length:var(--step-1)] text-[color:color-mix(in_srgb,var(--color-paper)_80%,transparent)]">
-            {t("intro")}
-          </p>
-          <a
-            href={site.instagram.personal.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-2 font-mono text-[length:var(--step--1)] uppercase tracking-wide text-[color:var(--color-blue)] hover:opacity-80"
-          >
-            <Instagram className="size-4" aria-hidden="true" />
-            {site.instagram.personal.handle}
-          </a>
-        </div>
-      </div>
+      <PageHeader eyebrow={site.area[locale]} title={t("heading")} subtitle={t("intro")}>
+        <a
+          href={site.instagram.personal.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 inline-flex items-center gap-2 text-[length:var(--step--1)] font-semibold text-[color:var(--color-sky)] hover:text-[color:var(--color-lime)]"
+        >
+          <Instagram className="size-4" aria-hidden="true" />
+          {site.instagram.personal.handle}
+        </a>
+      </PageHeader>
 
       <div className="mx-auto max-w-5xl px-4 py-14 sm:px-6 md:py-20">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

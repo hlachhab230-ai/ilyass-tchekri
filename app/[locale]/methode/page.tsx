@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { site } from "@/lib/site";
 import type { Locale } from "@/i18n/routing";
+import { PageHeader } from "@/components/layout/PageHeader";
 import { SessionFlow } from "@/components/sections/SessionFlow";
 import { TechniquesAccordion } from "@/components/sections/TechniquesAccordion";
 
@@ -34,12 +35,7 @@ export default async function MethodePage({
 
   return (
     <div>
-      <div className="bg-[color:var(--color-ink)] text-white">
-        <div className="px-5 py-14 sm:px-10 md:py-20">
-          <p className="eyebrow text-[color:var(--color-sky)]">{site.area[locale]}</p>
-          <h1 className="mt-3 text-[length:var(--step-4)]">{nav("methode")}</h1>
-        </div>
-      </div>
+      <PageHeader eyebrow={site.area[locale]} title={nav("methode")} />
       <SessionFlow />
       <TechniquesAccordion />
     </div>

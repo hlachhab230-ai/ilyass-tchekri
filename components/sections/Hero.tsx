@@ -5,6 +5,7 @@ import { PillButton } from "@/components/glass/PillButton";
 import { ArchMask } from "@/components/glass/ArchMask";
 import { AnatomyVisual } from "@/components/visuals/AnatomyVisual";
 import { FloatingBadge } from "@/components/glass/FloatingBadge";
+import { RotatedTag } from "@/components/glass/RotatedTag";
 import type { Locale } from "@/i18n/routing";
 
 export async function Hero() {
@@ -55,6 +56,9 @@ export async function Hero() {
         {/* Portrait + visuel + badges */}
         <div className="relative">
           <div className="relative mx-auto max-w-[380px]">
+            {/* étiquettes pivotées — flourish de la DA */}
+            <RotatedTag label="TÉTOUAN" rotate={-8} className="absolute -start-3 top-4 z-10 hidden md:inline-block" />
+            <RotatedTag label="THÉRAPIE MANUELLE" rotate={6} className="absolute -end-2 top-1 z-10 hidden lg:inline-block" />
             <ArchMask src={site.portrait} alt={site.name} initials="IT" />
             {/* visuel anatomique en halo, débordant en bas */}
             <div className="absolute -bottom-6 -start-8 hidden size-32 md:block">
