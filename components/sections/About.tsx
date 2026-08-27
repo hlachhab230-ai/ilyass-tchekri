@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getTranslations, getLocale } from "next-intl/server";
 import { Phone } from "lucide-react";
 import { site } from "@/lib/site";
@@ -13,11 +14,14 @@ export async function About() {
       <div className="grid items-center gap-10 md:grid-cols-2">
         {/* Image cabinet (placeholder) + carte de verre verticale superposée */}
         <div className="relative">
-          <div className="aspect-[4/3] overflow-hidden rounded-[var(--card-radius)] bg-gradient-to-br from-[color:var(--color-sky)] to-[color:color-mix(in_srgb,var(--color-blue)_40%,white)]">
-            {/* Emplacement photo du cabinet — voir TODO-CLIENT */}
-            <div className="flex h-full w-full items-center justify-center">
-              <span className="eyebrow text-[color:var(--color-ink)]/70">Photo du cabinet</span>
-            </div>
+          <div className="relative aspect-[4/3] overflow-hidden rounded-[var(--card-radius)] bg-[color:var(--color-ice)]">
+            <Image
+              src="/images/cabinet.jpg"
+              alt="Cabinet PhysioFit — salle de rééducation"
+              fill
+              sizes="(max-width: 768px) 100vw, 560px"
+              className="object-cover"
+            />
           </div>
           <div className="glass-solid absolute -bottom-6 end-4 w-40 rounded-[var(--card-radius)] p-4 shadow-[var(--shadow-card)]">
             <div className="eyebrow">{t("sinceLabel")}</div>

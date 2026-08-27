@@ -25,15 +25,12 @@ placeholders correspondants sont clairement commentés dans le code
 > enregistrée et ne peut pas être intégrée. Le réseau de l'atelier bloque les
 > sites d'images (Google, Unsplash…), donc les photos doivent venir de vous.
 
-- [ ] **Photo portrait** d'Ilyass (blouse, cabinet), `.jpg`/`.webp`, cadrage
-      **portrait 3:4**, ~1200×1600 px min.
-      → 1) déposer dans `public/images/ilyass-portrait.jpg`
-      → 2) dans `lib/site.ts` : `portrait: "/images/ilyass-portrait.jpg"`
-      (en attendant, un cadre en arche « IT » aux couleurs de la marque s'affiche)
-- [ ] **Photo du cabinet** (salle de soins), format **4:3**, ~1600×1200 px
-      → `public/images/cabinet.jpg` (emplacement déjà prévu dans la section « À propos »)
-- [ ] Photos de **séances / gestes** (mains sur patient, rééducation, dry
-      needling, cupping) — utiles pour enrichir les pages soins plus tard.
+- [x] **Photo portrait** d'Ilyass → intégrée (`public/images/ilyass-portrait.jpg`,
+      hero + page Parcours). Remplaçable par une version plus haute résolution.
+- [x] **Photo du cabinet** → intégrée (`public/images/cabinet.jpg`, section « À propos »).
+- [x] **Photo de séance (cupping)** → intégrée (`public/images/cupping.jpg`, page Méthode).
+- [ ] (Optionnel) Autres photos de **gestes** (dry needling, drainage, mobilisation)
+      pour enrichir les pages soins — déposer dans `public/images/` et me le signaler.
 - [ ] **Logo PhysioFit** en vectoriel (SVG) si vous voulez l'afficher.
 
 ## 🔵 Visuels 3D (optionnel — remplacer les SVG au trait)

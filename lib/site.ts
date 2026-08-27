@@ -48,7 +48,7 @@ export const site = {
    * puis mettez ici son chemin : "/images/ilyass-portrait.jpg".
    * Tant que la valeur est null, un cadre placeholder élégant est affiché.
    */
-  portrait: null as string | null,
+  portrait: "/images/ilyass-portrait.jpg" as string | null,
 
   /**
    * Adresse exacte du cabinet.
