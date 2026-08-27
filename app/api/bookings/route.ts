@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { bookingSchema, normalizeMoroccanPhone } from "@/lib/booking-schema";
 import { buildBookingMessage } from "@/lib/wa-message";
 import { getSupabaseAdmin } from "@/lib/supabase-admin";
+import { getAvailabilityServer } from "@/lib/availability-server";
+import { slotsFor } from "@/lib/availability";
 import { rateLimit } from "@/lib/rate-limit";
 import { site } from "@/lib/site";
 import type { Locale } from "@/i18n/routing";
@@ -48,6 +50,13 @@ export async function POST(req: Request) {
   const d = parsed.data;
   const phone = normalizeMoroccanPhone(d.phone) ?? d.phone;
   const locale: Locale = body.locale === "ar" ? "ar" : "fr";
+
+  // Le créneau doit être réellement disponible ce jour-là (disponibilités
+  // dynamiques : jours fermés + fenêtre horaire, gérées côté admin en Phase 3).
+  const availability = await getAvailabilityServer();
+  if (!slotsFor(d.preferredDate, availability).includes(d.preferredSlot)) {
+    return NextResponse.json({ ok: false, error: "slot_unavailable" }, { status: 422 });
+  }
 
   // 1) Persistance Supabase (trace)
   let id: string | null = null;

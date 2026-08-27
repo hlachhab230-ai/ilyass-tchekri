@@ -10,8 +10,8 @@ import { fr } from "date-fns/locale/fr";
 import { arMA } from "date-fns/locale/ar-MA";
 import { CalendarDays, MessageCircle, Mail, Check } from "lucide-react";
 
-import { bookingSchema, slotsForDate, SLOTS, type BookingInput, type BookingData } from "@/lib/booking-schema";
-import { site } from "@/lib/site";
+import { bookingSchema, SLOTS, type BookingInput, type BookingData } from "@/lib/booking-schema";
+import { defaultAvailability, slotsFor, type Availability } from "@/lib/availability";
 import { buildBookingMessage, whatsappLink, mailtoLink } from "@/lib/wa-message";
 import { soins } from "@/lib/content";
 import type { Locale } from "@/i18n/routing";
@@ -32,8 +32,6 @@ import { SlotChips } from "./SlotChips";
 
 type Result = { wa: string; mailto: string };
 
-// Jours de la semaine fermés (0 = dimanche) d'après les horaires du cabinet.
-const CLOSED_DAYS = site.hours.weekly.filter((d) => d.closed).map((d) => d.day);
 
 export function BookingForm() {
   const t = useTranslations("booking");
@@ -76,12 +74,30 @@ export function BookingForm() {
   const err = (code?: string) =>
     code && KNOWN_ERRORS.has(code) ? t(`form.errors.${code}` as never) : undefined;
 
-  // Créneaux proposables selon la date choisie (horaires du jour).
+  // Disponibilités dynamiques (Phase 3) : chargées depuis /api/availability,
+  // repli statique en attendant. Le formulaire grise les créneaux/jours fermés.
+  const [avail, setAvail] = React.useState<Availability>(defaultAvailability());
+  React.useEffect(() => {
+    let alive = true;
+    fetch("/api/availability")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((a) => alive && a && setAvail(a as Availability))
+      .catch(() => {});
+    return () => {
+      alive = false;
+    };
+  }, []);
+
+  // Créneaux proposables selon la date choisie.
   const watchedDate = watch("preferredDate");
   const watchedSlot = watch("preferredSlot");
   const availableSlots = React.useMemo(
-    () => (watchedDate ? slotsForDate(watchedDate) : SLOTS),
-    [watchedDate],
+    () => (watchedDate ? slotsFor(watchedDate, avail) : SLOTS),
+    [watchedDate, avail],
+  );
+  const closedDates = React.useMemo(
+    () => avail.closedDates.map((d) => new Date(d + "T00:00:00")),
+    [avail],
   );
 
   // Si la date change et que le créneau choisi n'est plus proposable, on le vide.
@@ -311,7 +327,8 @@ export function BookingForm() {
                       <Calendar
                         locale={locale}
                         selected={selectedDate}
-                        disabledDaysOfWeek={CLOSED_DAYS}
+                        disabledDaysOfWeek={avail.closedWeekdays}
+                        disabledDates={closedDates}
                         onSelect={(d) => {
                           if (d) field.onChange(format(d, "yyyy-MM-dd"));
                           setShowCal(false);

@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { site } from "./site";
 
 /**
  * Normalise un numéro de téléphone marocain vers le format international
@@ -50,20 +49,6 @@ export const VISIT_TYPES = ["first", "follow-up"] as const;
 export type VisitType = (typeof VISIT_TYPES)[number];
 
 /**
- * Créneaux réellement proposables pour une date donnée, d'après les horaires
- * hebdomadaires (site.hours). Un jour fermé renvoie [] ; sinon les créneaux
- * compris dans la plage open→close. (La disponibilité fine — congés, créneaux
- * déjà pris — relève de la Phase 3 ; ici on s'appuie sur les horaires.)
- */
-export function slotsForDate(dateStr: string): string[] {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) return SLOTS;
-  const day = new Date(dateStr + "T00:00:00").getDay();
-  const h = site.hours.weekly.find((d) => d.day === day);
-  if (!h || h.closed) return [];
-  return SLOTS.filter((s) => s >= h.open && s <= h.close);
-}
-
-/**
  * Schéma de réservation. Les messages d'erreur sont neutres (clés) ; la
  * traduction se fait côté composant via next-intl pour rester bilingue.
  * On garde les libellés FR par défaut comme repli lisible.
@@ -93,20 +78,11 @@ export const bookingSchema = z.object({
   message: z.string().trim().max(600, { message: "message_max" }).optional(),
   // Honeypot anti-spam : doit rester vide (champ caché aux humains).
   company: z.string().max(0).optional(),
-}).superRefine((data, ctx) => {
-  // Le créneau choisi doit exister dans les horaires du jour sélectionné.
-  if (
-    /^\d{4}-\d{2}-\d{2}$/.test(data.preferredDate) &&
-    data.preferredSlot &&
-    !slotsForDate(data.preferredDate).includes(data.preferredSlot)
-  ) {
-    ctx.addIssue({
-      code: z.ZodIssueCode.custom,
-      path: ["preferredSlot"],
-      message: "slot_unavailable",
-    });
-  }
 });
+// NB : la validation « créneau réellement disponible ce jour-là » est faite
+// contre les disponibilités dynamiques (lib/availability.ts) — côté serveur
+// dans /api/bookings et côté UI dans le formulaire — et non dans ce schéma,
+// pour rester cohérent avec la gestion admin (Phase 3).
 
 export type BookingInput = z.input<typeof bookingSchema>;
 export type BookingData = z.output<typeof bookingSchema>;

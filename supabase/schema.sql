@@ -35,3 +35,22 @@ create index if not exists booking_requests_status_idx
 -- → la route serveur utilise la clé service_role, qui contourne les RLS.
 -- → l'espace admin (Phase 3) lira via une session authentifiée dédiée.
 alter table public.booking_requests enable row level security;
+
+-- ────────────────────────────────────────────────────────────────────────────
+--  Phase 3 : disponibilités (jours fermés + plage horaire) — table singleton.
+--  Le formulaire public la consomme (via /api/availability) pour griser les
+--  créneaux indisponibles ; l'admin la modifie.
+-- ────────────────────────────────────────────────────────────────────────────
+create table if not exists public.availability (
+  id               boolean primary key default true,
+  closed_weekdays  int[]  not null default '{0}',     -- 0 = dimanche
+  open_time        text   not null default '09:00',
+  close_time       text   not null default '18:00',
+  closed_dates     date[] not null default '{}',      -- jours fermés ponctuels
+  updated_at       timestamptz not null default now(),
+  constraint availability_singleton check (id)
+);
+
+insert into public.availability (id) values (true) on conflict (id) do nothing;
+
+alter table public.availability enable row level security;
